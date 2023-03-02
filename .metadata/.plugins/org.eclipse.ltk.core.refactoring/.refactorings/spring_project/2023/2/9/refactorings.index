@@ -1,0 +1,5 @@
+1677547322907	Rename package 'user.dto'
+1677547966551	Rename type 'UserDAO'
+1677549647137	Move compilation unit
+1677549995668	Delete element
+1677560688555	Encapsulate field 'userPreference'

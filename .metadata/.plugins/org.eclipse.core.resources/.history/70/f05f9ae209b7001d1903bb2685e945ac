@@ -1,0 +1,12 @@
+package user.dao;
+
+import user.dto.UserDTO;
+
+public interface UserDAO {
+	public int addUser(UserDTO dto);
+	public UserDTO selectById(String id);
+	
+	public void updateUser(UserDTO dto);
+	public void deleteUser(UserDTO dto);
+	
+}

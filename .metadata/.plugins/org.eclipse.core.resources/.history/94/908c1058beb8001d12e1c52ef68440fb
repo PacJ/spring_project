@@ -1,0 +1,26 @@
+package admin.dao;
+
+import admin.dto.AdminDTO;
+import user.dto.AuthInfo;
+
+public class AdminDaoImp implements AdminDAO{
+
+	@Override
+	public AuthInfo addAdminProcess(AdminDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AuthInfo updateAdminProcess(AdminDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteAdmin(AdminDTO dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

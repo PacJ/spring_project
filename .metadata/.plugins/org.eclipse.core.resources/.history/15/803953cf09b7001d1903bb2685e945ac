@@ -1,0 +1,34 @@
+package user.dao;
+
+import user.dto.UserDTO;
+
+public class UserDaoImp implements UserDAO{
+	private UserDAO userDao;
+
+	public UserDaoImp() {
+	}
+	
+	public void setUserDao(UserDAO userDao) {
+		this.userDao = userDao;
+	}
+	
+	@Override
+	public int addUser(UserDTO dto) {
+	}
+
+	@Override
+	public UserDTO selectById(String id) {
+		return null;
+	}
+
+	@Override
+	public void updateUser(UserDTO dto) {
+		
+	}
+
+	@Override
+	public void deleteUser(UserDTO dto) {
+		
+	}
+
+}

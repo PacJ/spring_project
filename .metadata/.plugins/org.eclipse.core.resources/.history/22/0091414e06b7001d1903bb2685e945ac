@@ -1,0 +1,32 @@
+package user.dto;
+
+public class AdminDTO {
+	private String adminID;
+	private int adminPW;
+	private String adminName;
+	
+	public AdminDTO() {
+	}	
+	
+	public String getAdminID() {
+		return adminID;
+	}
+	public void setAdminID(String adminID) {
+		this.adminID = adminID;
+	}
+	public int getAdminPW() {
+		return adminPW;
+	}
+	public void setAdminPW(int adminPW) {
+		this.adminPW = adminPW;
+	}
+	public String getAdminName() {
+		return adminName;
+	}
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
+	
+	
+}
+
