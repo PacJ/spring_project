@@ -79,6 +79,8 @@ public class UserDTO {
 		this.userPreference = userPreference;
 	}
 	
-	
+	public boolean matchPassword(String userPw) {
+		return this.userPw.equals(userPw);
+	}
 }
 

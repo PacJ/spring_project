@@ -1,6 +1,7 @@
 package user.controller;
 
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -44,8 +45,27 @@ public class UserController {
 		session.setAttribute("authInfo", authInfo);
 		return "redirect:/home.do";
 	}
+
+//http://localhost:8090/myapp/user/login.do
 	
-	/*
-	 * @RequestMapping(value="/user/books.do", method=RequestMethod.GET) public
-	 */
+	//로그인
+	@RequestMapping(value="/user/login.do", method=RequestMethod.GET)
+	public String loginUser() {
+		return "/user/login";
+	}
+	
+	//로그인 처리
+	@RequestMapping(value="/user/login.do", method=RequestMethod.POST)
+	public String loginUser(UserDTO dto, HttpSession session, HttpServletResponse resp) {
+		return "redirect:/home.do";
+	}
+	
+	
+//http://localhost:8090/myapp/user/myLibrary.do
+	
+	@RequestMapping(value="/user/myLibrary.do", method=RequestMethod.GET)
+	public ModelAndView myLibrary(ModelAndView mav) {
+		mav.setViewName("user/myLibrary");
+		return mav;
+	}
 }

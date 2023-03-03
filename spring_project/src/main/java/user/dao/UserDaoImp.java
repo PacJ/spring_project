@@ -21,7 +21,7 @@ public class UserDaoImp implements UserDAO{
 
 	@Override
 	public UserDTO selectById(String id) {
-		return null;
+		return sqlSession.selectOne("user.selectByUserId", id);
 	}
 
 	@Override

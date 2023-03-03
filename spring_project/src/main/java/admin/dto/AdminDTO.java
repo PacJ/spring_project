@@ -16,11 +16,11 @@ public class AdminDTO {
 		this.adminId = adminId;
 	}
 
-	public String getAdminPassword() {
+	public String getAdminPw() {
 		return adminPw;
 	}
 
-	public void setAdminPassword(String adminPw) {
+	public void setAdminPw(String adminPw) {
 		this.adminPw = adminPw;
 	}
 

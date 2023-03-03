@@ -1,0 +1,54 @@
+package admin.service;
+
+
+import admin.dao.AdminDAO; 
+import admin.dto.AdminDTO;
+import admin.dto.adminAuthInfo;
+
+//관리자 관련 서비스: 회원가입,	로그인, 정보수정, 회원탈퇴. DB에 정보를 insert, select, update, delete 한다.
+//AuthInfo: 회원의 정보값을 세션에 저장 하기 위해 사용.
+public class AdminServiceImp implements AdminService { 
+	
+	private AdminDAO adminDao;
+	
+	public AdminServiceImp() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public adminAuthInfo addAdminProcess(AdminDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public adminAuthInfo loginProcess(AdminDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AdminDTO updateAdminProcess(String adminId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public adminAuthInfo updateAdminProcess(AdminDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public adminAuthInfo deleteAdminProcess(String adminId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+
+	  
+  
+  
+  }
+ 

@@ -8,7 +8,7 @@
 <h1>
 	Hello world!  
 </h1>
-
+<a href="./user/myLibrary.do">나의도서관</a>
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

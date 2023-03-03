@@ -1,0 +1,9 @@
+package com.mycompany.myapp;
+import java.io.StringWriter;
+public class oaa {
+	public static void main(String[] args) {
+		System.setProperty("python.import.site","false");
+
+	}
+
+}

@@ -23,6 +23,7 @@
 			<param-value>
 			/WEB-INF/spring/appServlet/user-context.xml
 			/WEB-INF/spring/appServlet/common-context.xml
+			/WEB-INF/spring/appServlet/admin-context.xml
 			</param-value>
 			
 		</init-param>

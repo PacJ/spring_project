@@ -1,0 +1,12 @@
+package admin.dto;
+
+public class adminAuthInfo {
+		private String adminId;
+		private String adminPw;
+		
+		public adminAuthInfo() {
+			
+		}
+
+		
+}
