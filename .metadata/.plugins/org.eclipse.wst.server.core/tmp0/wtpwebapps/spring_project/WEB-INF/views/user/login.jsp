@@ -5,14 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+<!-- <script>
+#({dto.user=null}) = event.stoppropogation
+
+#({dto.userPw.matches=}) = 
+</script> -->
 </head>
 <body>
-	<form name="login" method="post"  action="login.do" >
+	<form name="login" method="post" class="validation-form"  action="login.do" >
 		<div class="form-group">
-			<input type="text" class="form-control" name="memberEmail" placeholder="Email"  id= "email" required="required">		
+			<input type="text" class="form-control" name="userId" placeholder="Email"  id= "email" required="required">		
 		</div>
 		<div class="form-group mt-3">
-			<input type="password" class="form-control" name="memberPass" placeholder="Password" required="required">	
+			<input type="password" class="form-control" name="userPw" placeholder="Password" required="required">	
 		</div>   
 		 
 		<div class="form-check mt-3">
@@ -22,8 +28,7 @@
 		</div> 
 		     
 		<div class="form-group text-center mt-5">
-		    <input type="text" name="returnUrl" value="${param.returnUrl}" /> 
-				<button type="submit" class="btn btn-dark btn-lg btn-block login-btn" >Login</button>
+			<button type="submit" class="btn btn-dark btn-lg btn-block login-btn" >Login</button>
 		</div>
 	</form>
 </body>

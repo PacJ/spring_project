@@ -1,0 +1,107 @@
+@charset 'utf-8';
+@import 'css_reset.scss';
+
+// 저장 시 자동 컴파일, sourcemap 생성 안함, 들여쓰기 형식 지정
+// sass --watch --sourcemap=none --style expanded ./css/scss/common.scss:./css/common.css
+
+/* pc 로그인_회원가입 영역 */
+
+.sign_area_pc {
+  @include areaSet(100%, auto, $fc-b4);
+}
+
+.sign_area_pc p {
+  @include areaInnerSet(1400px, auto, transparent);
+  @include fontSet('neo_r', 16px, $fc-b2, right);
+  padding: 12px 0 12px 0;
+  margin: 0 auto;
+}
+
+.sign_area_pc p span {
+  @include fontSet('neo_r', 14px, $fc-b2, right);
+  margin: 0 20px 0 20px;
+}
+
+.sign_area_pc p a {
+  @include fontSet('neo_r', 16px, $fc-b2, right);
+}
+
+/* pc nav */
+.nav_area {
+  position: fixed;
+  @include areaSet(100%, 80px, $fc-wh);
+  z-index: 1000;
+}
+
+.nav_area .inner {
+  @include areaInnerSet(1400px, 80px, transparent);
+  margin: auto;
+}
+
+.nav_area .inner a .logo_pc {
+  height: 80px;
+}
+
+.nav_area .inner ul {
+  float: right;
+}
+
+.nav_area .inner ul li {
+  float: left;
+  margin-left: 80px;
+}
+
+.nav_area .inner ul li a {
+  height: 80px;
+  line-height: 80px;
+  @include fontSet('neo_b', 18px, $fc-b2, right);
+}
+
+.nav_area .inner ul li a:hover {
+  @include fontSet('neo_eb', 18px, $fc-bk, right);
+}
+
+@media (max-width: 700px) {
+  * {
+    min-width: 0;
+    min-height: 0;
+  }
+  /* pc 로그인_회원가입 영역 none */
+  .sign_area_pc {
+    display: none;
+  }
+
+  /* mob nav */
+
+  .nav_area {
+    @include areaSet(100%, 60px, $fc-wh);
+  }
+
+  .nav_area .inner {
+    @include areaInnerSet(100%, auto, $fc-wh);
+    padding: 0 15px 0 15px;
+  }
+
+  .nav_area .inner a .logo_pc {
+    height: 100%;
+  }
+
+  .nav_area .inner ul {
+    float: right;
+  }
+
+  .nav_area .inner ul li {
+    float: left;
+    margin-left: 80px;
+  }
+
+  .nav_area .inner ul li a {
+    height: 80px;
+    line-height: 80px;
+    @include fontSet('neo_b', 18px, $fc-b2, right);
+  }
+
+  .nav_area .inner ul li a:hover {
+    @include fontSet('neo_eb', 18px, $fc-bk, right);
+  }
+}

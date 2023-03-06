@@ -9,6 +9,9 @@
 <body>
 	<p>My Library!</p>
 	<a href="../home.do">홈페이지로</a>
+	<p>${sessionScope.authInfo.userName}</p>
+	<p>${sessionScope.UserDTO.userAge }</p>
+	<p>${userDTO.userAge }</p>
 	
 	
 </body>

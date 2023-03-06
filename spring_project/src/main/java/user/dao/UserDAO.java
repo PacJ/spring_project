@@ -8,7 +8,7 @@ public interface UserDAO {
 	public int insertUser(UserDTO dto);
 	
 	// 유저 ID별로 선택
-	public UserDTO selectById(String id);
+	public UserDTO selectByUserId(String id);
 	
 	// 유저 정보 수정
 	public void updateUser(UserDTO dto);

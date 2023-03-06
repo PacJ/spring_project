@@ -1,0 +1,115 @@
+/* font list */
+
+@font-face {
+  font-family: 'neo_l';
+  font-display: auto;
+  font-weight: 400;
+  src: url('../assets/font/NanumSquareNeoOTF-aLt.otf') format('OpenType');
+}
+
+@font-face {
+  font-family: 'neo_r';
+  font-display: auto;
+  font-weight: 500;
+  src: url('../../assets/font/NanumSquareNeoOTF-bRg.otf') format('OpenType');
+}
+
+@font-face {
+  font-family: 'neo_b';
+  font-display: auto;
+  font-weight: 600;
+  src: url('../../assets/font/NanumSquareNeoOTF-cBd.otf') format('OpenType');
+}
+
+@font-face {
+  font-family: 'neo_eb';
+  font-display: auto;
+  font-weight: 700;
+  src: url('../../assets/font/NanumSquareNeoOTF-dEb.otf') format('OpenType');
+}
+
+@font-face {
+  font-family: 'neo_hb';
+  font-display: auto;
+  font-weight: 800;
+  src: url('../../assets/font/NanumSquareNeoOTF-eHv.otf') format('OpenType');
+}
+
+// color list
+
+$mc: #988e7e;
+$bc: #cabca7;
+
+$fc-wh: #ffffff;
+$fc-bk: #141414;
+$fc-b1: #333333;
+$fc-b2: #666666;
+$fc-b3: #999999;
+$fc-b4: #dddddd;
+
+/* mixin */
+
+@mixin fontSet($font, $size, $color, $align) {
+  font-family: $font;
+  font-size: $size;
+  color: $color;
+  text-align: $align;
+}
+
+@mixin areaSet($width, $height, $color) {
+  width: $width;
+  height: $height;
+  background-color: $color;
+  min-width: 1640px;
+}
+
+@mixin areaInnerSet($width, $height, $color) {
+  width: $width;
+  height: $height;
+  background-color: $color;
+}
+
+/* css reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  @include fontSet('neo_r', 16px, $fc-bk, left);
+  transition: 0.3s;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 1640px;
+  height: auto;
+}
+
+a,
+a:link,
+a:hover,
+a:active,
+a:visited {
+  color: $fc-bk;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+button,
+button:focus {
+  border: 0;
+  background-color: $fc-wh;
+  outline: 0;
+  cursor: pointer;
+}
+
+/* common */
+
+.tf_01 {
+  @include fontSet('neo_eb', 34px, $mc, left);
+}

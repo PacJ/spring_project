@@ -1,10 +1,13 @@
 package user.controller;
 
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -57,15 +60,72 @@ public class UserController {
 	//로그인 처리
 	@RequestMapping(value="/user/login.do", method=RequestMethod.POST)
 	public String loginUser(UserDTO dto, HttpSession session, HttpServletResponse resp) {
-		return "redirect:/home.do";
+		System.out.println("로그인 컨트롤러");
+		try {
+			AuthInfo authInfo = userService.loginProcess(dto);
+			if(authInfo == null) {
+				PrintWriter out = resp.getWriter();
+				out.print("<script>const forms = document.getElementsByClassName('validation-form');\r\n"
+						+ "\r\n"
+						+ "      Array.prototype.filter.call(forms, (form) => {\r\n"
+						+ "        form.addEventListener('submit', function (event) {\r\n"
+						+ "          if (form.checkValidity() === false) {\r\n"
+						+ "            event.preventDefault();\r\n"
+						+ "            event.stopPropagation();\r\n"
+						+ "          }\r\n"
+						+ "\r\n"
+						+ "          form.classList.add('was-validated');\r\n"
+						+ "        }, false);\r\n"
+						+ "      });</script>");
+			}
+			session.setAttribute("authInfo", authInfo);
+			return "redirect:/home.do";
+		} catch (Exception e) {
+			resp.setContentType("text/html;charset=UTF-8");
+			// 로그인 실패시 팝업 창을 띄운다.
+			try {
+				PrintWriter out = resp.getWriter();
+				out.print("<script>let el = document.getElementsByClassName(popup_back);"
+						+ "el.classList.toggle(\"on\");</script>");
+				out.flush();
+//				return "popup";
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return null;
 	}
 	
+//	@PostMapping("/user/login.do")
+//	public String onWrongInput(HttpSession session, HttpServletResponse resp) {
+//		if(session == null) {
+//			try {
+//				PrintWriter out = resp.getWriter();
+//				out.print("<script>let el = document.getElementsByClassName(popup_back);"
+//						+ "el.classList.toggle(\"on\");</script>");
+//				out.flush();
+////			return "popup";
+//			} catch (Exception e2) {
+//				e2.printStackTrace();
+//			}
+//		}
+////		resp.setContentType("text/html;charset=UTF-8");
+//		// 로그인 실패시 팝업 창을 띄운다.
+//		return null;
+//	}
+	
+	//팝업창 매핑
+	@RequestMapping(value="/popup.do", method=RequestMethod.GET)
+	public String popup() {
+		return "/popup";
+	}
 	
 //http://localhost:8090/myapp/user/myLibrary.do
 	
 	@RequestMapping(value="/user/myLibrary.do", method=RequestMethod.GET)
 	public ModelAndView myLibrary(ModelAndView mav) {
 		mav.setViewName("user/myLibrary");
+		
 		return mav;
 	}
 }

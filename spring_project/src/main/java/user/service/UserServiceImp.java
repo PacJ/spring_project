@@ -28,16 +28,28 @@ public class UserServiceImp implements UserService{
 	// 유저 로그인
 	@Override
 	public AuthInfo loginProcess(UserDTO dto) {
-		UserDTO user = userDao.selectById(dto.getUserId());
-		if(user == null) {
-			System.out.println("암살시도가 있었습니다");
-			throw new RuntimeException();
-		}
+		System.out.println("loginProcess 실행");
+		UserDTO user = userDao.selectByUserId(dto.getUserId());
+		System.out.println("user에 할당 완료");
+		System.out.println(user);
 		
-		if(!user.matchPassword(dto.getUserPw())) {
-			System.out.println("간첩신고는 111");
-			throw new RuntimeException();
+//		if(user == null) {
+//			System.out.println("암살시도가 있었습니다");
+////			throw new RuntimeException();
+//			return null;
+//		}
+//		
+//		if(!user.matchPassword(dto.getUserPw())) {
+//			System.out.println("간첩신고는 111");
+////			throw new RuntimeException();
+//			return null;
+//		}
+		System.out.println(user);
+		
+		if(user != null && user.matchPassword(dto.getUserPw())) {
+			return new AuthInfo(user.getUserId(), user.getUserPw(), user.getUserName());
 		}
+//		return new AuthInfo(user.getUserId(), user.getUserPw(), user.getUserName());
 		return null;
 	}
 

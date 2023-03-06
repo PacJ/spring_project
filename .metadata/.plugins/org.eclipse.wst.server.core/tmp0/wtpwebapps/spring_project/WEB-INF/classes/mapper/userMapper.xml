@@ -12,10 +12,9 @@
 	</insert>
 	
 	<!-- 로그인 -->
-   <select id="selectByUserId" parameterType="user.dto.UserDTO">
-      SELECT *
-      FROM lUser
-      WHERE userId = #{userId};
+   <select id="selectByUserId" parameterType="string" resultType="user.dto.UserDTO">
+      SELECT * FROM lUser
+      WHERE userId = #{userId}
    </select>
 
 
