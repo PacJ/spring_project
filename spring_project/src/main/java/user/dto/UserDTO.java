@@ -78,9 +78,11 @@ public class UserDTO {
 	public void setUserPreference(String userPreference) {
 		this.userPreference = userPreference;
 	}
-	
+
 	public boolean matchPassword(String userPw) {
 		return this.userPw.equals(userPw);
 	}
+	
+	
 }
 

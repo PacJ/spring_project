@@ -1,7 +1,0 @@
-package user.dto;
-
-public class AuthInfo {
-	private String userId;
-	private String userPassword;
-	private String userName;
-}

@@ -1,35 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-<!-- <script>
-#({dto.user=null}) = event.stoppropogation
 
-#({dto.userPw.matches=}) = 
-</script> -->
-</head>
-<body>
-	<form name="login" method="post" class="validation-form"  action="login.do" >
-		<div class="form-group">
-			<input type="text" class="form-control" name="userId" placeholder="Email"  id= "email" required="required">		
-		</div>
-		<div class="form-group mt-3">
-			<input type="password" class="form-control" name="userPw" placeholder="Password" required="required">	
-		</div>   
-		 
-		<div class="form-check mt-3">
-		<label class="form-check-label" for="rememberEmail">Email 기억하기:</label>
-			<input type="checkbox" class="form-check-input" name="rememberEmail" placeholder="rememberEmail" id="rememberEmail" > 
-			
-		</div> 
-		     
-		<div class="form-group text-center mt-5">
-			<button type="submit" class="btn btn-dark btn-lg btn-block login-btn" >Login</button>
-		</div>
-	</form>
-</body>
-</html>
+	<!-- login -->
+        <section class="sign_area">
+            <article class="inner">
+                <h2>로그인</h2>
+                <p>영원한 도서관에 방문하신것을 진심으로 환영합니다.</p>
+                <form class="login_form" action="login.do" method="post">
+                    <input type="text" name="userId" placeholder="아이디를 입력하세요." />
+                    <input type="password" name="userPw" placeholder="패스워드를 입력하세요." />
+                    <p class="on">※ 작성오류 문구</p>
+                    <div>
+                        <input type="checkbox" id="save_id" value="">
+                        <label for="save_id">&nbsp;&nbsp;아이디 저장</label>
+                        <p>아직 회원이 아니신가요?<a href="${pageContext.request.contextPath}/user/signup.do">회원가입</a></p>
+                    </div>
+                    <button type="submit">로그인</button>
+                </form>
+            </article>
+        </section>

@@ -1,8 +1,0 @@
-package user.dao;
-
-import user.dto.UserDTO;
-
-public interface UserDAO {
-	public int insertUser(UserDTO dto);
-	
-}

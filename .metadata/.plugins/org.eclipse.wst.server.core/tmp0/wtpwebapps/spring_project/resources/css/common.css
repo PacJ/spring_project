@@ -4,31 +4,31 @@
   font-family: 'neo_l';
   font-display: auto;
   font-weight: 400;
-  src: url('../assets/font/NanumSquareNeoOTF-aLt.otf') format('OpenType');
+  src: url('../resources/assets/font/NanumSquareNeoOTF-aLt.otf') format('OpenType');
 }
 @font-face {
   font-family: 'neo_r';
   font-display: auto;
   font-weight: 500;
-  src: url('../../assets/font/NanumSquareNeoOTF-bRg.otf') format('OpenType');
+  src: url('../../resources/assets/font/NanumSquareNeoOTF-bRg.otf') format('OpenType');
 }
 @font-face {
   font-family: 'neo_b';
   font-display: auto;
   font-weight: 600;
-  src: url('../../assets/font/NanumSquareNeoOTF-cBd.otf') format('OpenType');
+  src: url('../../resources/assets/font/NanumSquareNeoOTF-cBd.otf') format('OpenType');
 }
 @font-face {
   font-family: 'neo_eb';
   font-display: auto;
   font-weight: 700;
-  src: url('../../assets/font/NanumSquareNeoOTF-dEb.otf') format('OpenType');
+  src: url('../../resources/assets/font/NanumSquareNeoOTF-dEb.otf') format('OpenType');
 }
 @font-face {
   font-family: 'neo_hb';
   font-display: auto;
   font-weight: 800;
-  src: url('../../assets/font/NanumSquareNeoOTF-eHv.otf') format('OpenType');
+  src: url('../../resources/assets/font/NanumSquareNeoOTF-eHv.otf') format('OpenType');
 }
 
 /* css reset */

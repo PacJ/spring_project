@@ -4,15 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>나의 도서관</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<p>My Library!</p>
-	<a href="../home.do">홈페이지로</a>
-	<p>${sessionScope.authInfo.userName}</p>
-	<p>${sessionScope.UserDTO.userAge }</p>
-	<p>${userDTO.userAge }</p>
-	
-	
+<p>내 정보</p>
+<table>
+	<thead>나의 정보</thead>
+	<tr>
+		<td>이름</td>
+		<td>${user.dto.userDTO.userId }</td>
+	</tr>
+	<tr>
+		<td>나이</td>
+		<td>${user.dto.userDTO.userAge }</td>
+	</tr>
+</table>
+<a href="../home.do">홈페이지</a>
 </body>
 </html>

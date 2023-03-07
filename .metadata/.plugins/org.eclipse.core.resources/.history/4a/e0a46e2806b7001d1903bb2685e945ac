@@ -1,7 +1,0 @@
-package user.dto;
-
-public class AdminDTO {
-	private String adminID;
-	private int adminPW;
-	private String adminName;
-}
