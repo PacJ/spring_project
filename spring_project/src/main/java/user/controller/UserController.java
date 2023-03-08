@@ -7,11 +7,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import common.service.idCheck;
 import user.dao.UserDAO;
 import user.dao.UserDaoImp;
 import user.dto.AuthInfo;
@@ -24,6 +28,7 @@ import user.service.UserService;
 public class UserController {
 
 	private UserService userService;
+	private UserDAO userdao;
 	
 	public UserController() {
 		
@@ -70,7 +75,7 @@ public class UserController {
 			resp.setContentType("text/html;charset=UTF-8");
 			try {
 				PrintWriter out = resp.getWriter();
-				out.print("<script>alert('아이디 비밀번호 불일치'); history.go(-1);</script>");
+				out.print("history.go(-1);</script>");
 				out.flush();
 			} catch (Exception e2) {
 				// TODO: handle exception
@@ -93,19 +98,17 @@ public class UserController {
 		return mav;
 	}
 	
-	//아이디 중복 확인
-	@RequestMapping(value="/user/idCheck.do")
-	@ResponseBody
-	public String idCheck(String id, HttpServletResponse resp) {
-		resp.setContentType("text/plain");
-			UserDAO userdao = null;
-			UserDTO user = userdao.selectByUserId(id);
-		      if(user == null) {
-		          return "사용가능";
-		       }
-		       
-	      System.out.println("암살시도가 있었습니다");
-	      return "이미 등록이 된 아이디입니다.";
+	//아이디 중복체크
+	@RequestMapping(value="/checkIdDuplicate.do", method=RequestMethod.GET)
+	public String execute() {
+		return "user/signup.do";
+	}
+	
+	@RequestMapping(value="/name.do", method=RequestMethod.POST)
+	public ModelAndView process(String name, ModelAndView mav) {
+		mav.addObject("name", name);
+		mav.setViewName("user/signup.do");
+		return mav;
 	}
 	/*
 	 * @RequestMapping(value="/user/books.do", method=RequestMethod.GET) public

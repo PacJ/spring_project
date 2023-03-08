@@ -8,6 +8,9 @@ public interface UserService {
 //	회원가입(유저 추가)
 	public AuthInfo addUserProcess(UserDTO dto);
 	
+//  중복아이디 체크
+	public UserDTO checkIdDuplicate(String id);
+	
 //	로그인 처리
 	public AuthInfo loginProcess(UserDTO dto);
 	

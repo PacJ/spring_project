@@ -35,7 +35,7 @@ $(document).ready(function () {
   });
 
   $('.radio_btn').on('click', function () {
-    $('input[name="user_gender"]').val($(this).text());
+    $('input[name="userSex"]').val($(this).text());
     $('.radio_btn').removeClass('active');
     $(this).addClass('active');
   });

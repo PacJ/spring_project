@@ -2,21 +2,61 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript">
 $(document).ready(function(){
-	var isIdChecked=false;
-	$("#idCheck").on("click", function(e){
-		e.preventDefault();  
-		$("#toggle").toggleClass("on");
-		 $.ajax({
-			url : "http://localhost:8090/myapp/user/idCheck.do" 
-			,data : {"id" : $("idCheckInput").val()}
-			,success :function(data){
-                                if(data=="사용가능") isIdChecked=true;  
-                                alert(data);
-			},error : function(req,status,err){
-				console.log(req);
-			}
-		}); //ajax 
-	});// idCheck
+	
+	
+	$("#idCheck").click(function(){
+/* 	    var id = $('#idCheckInput').val(); */
+	    $.ajax({
+	        url: '/checkIdDuplicate.do',
+	        type: 'POST',
+	        dataType:'text',
+	        data:{name:$('#idCheckInput').val()},
+	        success: viewMessage,
+	        error: function() {
+	            alert('아이디 중복 체크에 실패했습니다.');
+	        }
+	    });
+	    
+	    function viewMessage(res) {
+	    	console.log(res);
+	    }
+	        
+	    });  
+	    
+	    // 비밀번호 확인
+	    $("input[name='userPw']").keyup(function() {
+	    	if($("input[name='userPw']").val() != $("input[name='userPwCheck']").val()) {
+	    		$('#pwCheck').addClass('on');
+	    	} else {
+	    		$('#pwCheck').removeClass('on');
+	    	}
+	    });
+	    
+	    $("input[name='userPwCheck']").keyup(function() {
+	    	if($("input[name='userPw']").val() != $("input[name='userPwCheck']").val()) {
+	    		$('#pwCheck').addClass('on');
+	    	} else {
+	    		$('#pwCheck').removeClass('on');
+	    	}
+	    });
+	    
+	function displayVals() {
+		let postVal = $("#member_post").val();
+		let addrVal = $("#member_addr").val();
+		let extra = $("#extra").val();
+		
+		console.log(postVal);
+		console.log(addrVal);
+		console.log(extra);
+		
+		$("input[name='userAddress']").val(postVal + " " + addrVal + " " + extra);
+	}
+	  
+ 
+	$('#extra').keyup(function() {
+		console.log($("#extra").val());
+		displayVals();
+	})
 });
 </script>
 <!-- sign up -->
@@ -28,24 +68,25 @@ $(document).ready(function(){
                     <ul>
                         <li class="id_input">
                             <h4>아이디</h4>
-                            <input type="text" placeholder="아이디를 입력하세요." name="userId" id="idCheckInput"/>
+                            <input type="text" placeholder="아이디를 입력하세요.(영어 대/소문자, 숫자 8~15자)" name="userId" id="idCheckInput"
+                            pattern="[a-zA-Z0-9]{8,15}"/>
                             <button type="button" id="idCheck">아이디 중복확인</button>
-                            <p class="on" id = "toggle">※ 작성오류 문구</p>
+                            <p class="" id = "toggle">※ 이미 가입된 아이디 입니다.</p>
                         </li>
                         <li>
                             <h4>비밀번호</h4>
                             <input type="password" placeholder="패스워드를 입력하세요." name="userPw"/>
-                            <p class="on">※ 작성오류 문구</p>
+                            <p class="">※ 작성오류 문구</p>
                         </li>
                         <li>
                             <h4>비밀번호 재확인</h4>
-                            <input type="password" placeholder="패스워드를 입력하세요." />
-                            <p class="on">※ 작성오류 문구</p>
+                            <input type="password" placeholder="패스워드를 입력하세요." name="userPwCheck"/>
+                            <p class="" id="pwCheck">※ 비밀번호가 다릅니다.</p>
                         </li>
                         <li>
                             <h4>성명</h4>
                             <input type="text" placeholder="성명을 입력하세요."  name="userName"/>
-                            <p class="on">※ 작성오류 문구</p>
+                            <p class="">※ 작성오류 문구</p>
                         </li>
                         <li class="addr_input">
                             <h4>주소</h4>
@@ -53,21 +94,22 @@ $(document).ready(function(){
                             <input id="member_post" type="text" placeholder="우편번호" readonly>
                             <button class="addr_btn" type="button">주소찾기</button>
                             <input id="member_addr" type="text" placeholder="주소" readonly> <br>
-                            <input type="text" placeholder="상세 주소를 입력하세요.">
-                            <p class="on">※ 작성오류 문구</p>
+                            <input type="text" id="extra" placeholder="상세 주소를 입력하세요.">
+                            <input type="hidden" name=userAddress>
+                            <p class="">※ 작성오류 문구</p>
                         </li>
                         <li class="sex_input">
                             <h4>성별</h4>
-                            <input type="hidden" name="user_gender" value="남성" name="userSex"/>
+                            <input type="hidden" name="userSex" value="남성" />
                             <button type="button" class="radio_btn active">남성</button>
                             <button type="button" class="radio_btn">여성</button>
 
-                            <p class="on">※ 작성오류 문구</p>
+                            <p class="">※ 작성오류 문구</p>
                         </li>
                         <li>
                             <h4>생년월일</h4>
                             <input type="text" placeholder="6자리 숫자로 입력하세요." name=""/>
-                            <p class="on">※ 작성오류 문구</p>
+                            <p class="">※ 작성오류 문구</p>
                         </li>
                     </ul>
                     <button type="submit">가입하기</button>

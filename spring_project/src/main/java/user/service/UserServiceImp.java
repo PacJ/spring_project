@@ -1,6 +1,7 @@
 package user.service;
 
 
+import common.service.idCheck;
 import user.dao.UserDAO;
 import user.dto.AuthInfo;
 import user.dto.UserDTO;
@@ -42,6 +43,8 @@ public class UserServiceImp implements UserService{
       return new AuthInfo(user.getUserId(), user.getUserPw(), user.getUserName());
    }
 
+   // 회원가입시 유저 아이디 중복 체크
+//   public UserDTO
 	// 유저 정보 수정
 	@Override
 	public UserDTO updateUserProcess(String userId) {
@@ -61,6 +64,12 @@ public class UserServiceImp implements UserService{
 	public AuthInfo deleteUserProcess(String userId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public UserDTO checkIdDuplicate(String id) {
+		UserDTO user = userDao.selectByUserId(id);
+		return user;
 	}
 
 }
