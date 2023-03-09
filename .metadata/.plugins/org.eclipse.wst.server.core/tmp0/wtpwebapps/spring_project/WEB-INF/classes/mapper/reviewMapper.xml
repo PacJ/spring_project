@@ -7,7 +7,7 @@
 
 	<!-- 후기 삽입 -->
 	<insert id="addReview" >
-	INSERT INTO bookReview (ReviewKeynum, <!-- isbn, --> userId, <!-- starNum, --> <!-- reviewContents, --> reviewDate)
-	VALUES (bookReview_reviewKeyNum.nextval, <!-- #{isbn}, --> #{userId}, <!-- #{starNum,} --> <!-- #{reviewContents}, --> SYSDATE);
+	INSERT INTO bookReview (ReviewKeynum, userId, reviewDate)
+	VALUES (bookReview_reviewKeyNum.nextval, #{userId}, SYSDATE);
 	</insert>
 </mapper>

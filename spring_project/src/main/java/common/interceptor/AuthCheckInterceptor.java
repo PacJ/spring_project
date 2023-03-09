@@ -24,6 +24,7 @@ public class AuthCheckInterceptor extends HandlerInterceptorAdapter {
 		if(session != null) {
 			AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 			if(authInfo != null) {
+				response.sendRedirect(request.getContextPath() + "/home.do");
 				return true;
 			}
 		}
