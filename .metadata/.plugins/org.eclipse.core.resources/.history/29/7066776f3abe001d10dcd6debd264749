@@ -1,0 +1,11 @@
+package bookList.dao;
+
+public class bookListDaoImp implements BookListDAO{
+
+	@Override
+	public int readCount(int num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

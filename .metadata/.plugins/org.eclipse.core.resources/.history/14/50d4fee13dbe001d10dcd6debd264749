@@ -1,0 +1,5 @@
+package bookReview.dao;
+
+public class BookReviewDaoImp implements BookReviewDAO{
+
+}

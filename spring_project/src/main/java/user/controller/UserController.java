@@ -99,18 +99,12 @@ public class UserController {
 	}
 	
 	//아이디 중복체크
-	@RequestMapping(value="/checkIdDuplicate.do", method=RequestMethod.GET)
-	public String execute() {
-		return "user/signup.do";
+	@RequestMapping(value="/user/name.do", method = RequestMethod.POST)
+	@ResponseBody
+	public UserDTO process(@RequestParam String name) {
+		System.out.println("process()");
+		UserDTO dto = userdao.selectByUserId(name);
+		
+		return dto;
 	}
-	
-	@RequestMapping(value="/name.do", method=RequestMethod.POST)
-	public ModelAndView process(String name, ModelAndView mav) {
-		mav.addObject("name", name);
-		mav.setViewName("user/signup.do");
-		return mav;
-	}
-	/*
-	 * @RequestMapping(value="/user/books.do", method=RequestMethod.GET) public
-	 */
 }

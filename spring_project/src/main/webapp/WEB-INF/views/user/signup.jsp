@@ -4,24 +4,41 @@
 $(document).ready(function(){
 	
 	
-	$("#idCheck").click(function(){
-/* 	    var id = $('#idCheckInput').val(); */
-	    $.ajax({
-	        url: '/checkIdDuplicate.do',
-	        type: 'POST',
-	        dataType:'text',
-	        data:{name:$('#idCheckInput').val()},
-	        success: viewMessage,
-	        error: function() {
-	            alert('아이디 중복 체크에 실패했습니다.');
-	        }
-	    });
-	    
-	    function viewMessage(res) {
-	    	console.log(res);
-	    }
-	        
-	    });  
+ 	$('#idCheck').on('click', process); 
+	
+	// 아이디 확인
+/*  	function process() {
+		$.ajax({
+			type:'POST',
+			data:{name:$('idCheckInput').val()},
+			url:'/name.do',
+			success: function(data) {
+				if(data=="이미 사용중인 아이디입니다.") {
+					$('usedId').addClass('on');
+				} else {
+					$('usedId').removeClass('on');
+					console.log("사용가능 아이디")
+				}
+				console.log(data);
+				viewMessage(data); 
+			}
+		});
+	} */
+	 
+ 	function process() {
+		$.post('name.do', {name:$('#idCheckInput').val()}, viewMessage);
+	} 
+ 	
+ 	function viewMessage(data) {
+  		if(data != null) {
+ 			console.log("사용불가");
+ 			console.log(data);
+ 			console.log(data.dto);
+			$('#usedId').addClass('on'); 			
+ 		} else {
+ 			console.log("사용 가능한 아이디입니다!")
+ 		} 
+	} 
 	    
 	    // 비밀번호 확인
 	    $("input[name='userPw']").keyup(function() {
@@ -71,7 +88,7 @@ $(document).ready(function(){
                             <input type="text" placeholder="아이디를 입력하세요.(영어 대/소문자, 숫자 8~15자)" name="userId" id="idCheckInput"
                             pattern="[a-zA-Z0-9]{8,15}"/>
                             <button type="button" id="idCheck">아이디 중복확인</button>
-                            <p class="" id = "toggle">※ 이미 가입된 아이디 입니다.</p>
+                            <p class="" id = "usedId">※ 이미 가입된 아이디 입니다.</p>
                         </li>
                         <li>
                             <h4>비밀번호</h4>

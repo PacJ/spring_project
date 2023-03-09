@@ -26,5 +26,13 @@
 		<put-attribute name="content" value = "/WEB-INF/views/user/login.jsp"/>
 	</definition>
 	
+	<definition name = "bookList/book" extends = "baseLayout">
+		<put-attribute name="content" value = "/WEB-INF/views/bookList/book.jsp" />
+	</definition>
+	
+	<definition name = "bookList/writeRev" extends = "baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/bookList/writeRev.jsp" />
+	</definition>
+	
 </tiles-definitions>
 

@@ -16,6 +16,8 @@
 			<mvc:exclude-mapping path="/home.do" />
 			<mvc:exclude-mapping path="/user/login.do" />
 			<mvc:exclude-mapping path="/user/signup.do" />
+			<mvc:exclude-mapping path="/admin/adminSignup.do"/>
+			<mvc:exclude-mapping path="/bookList/books.do" />
 			<bean class="common.interceptor.AuthCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
@@ -35,8 +37,9 @@
 		<property name = "mapperLocations" >
 			<list>
 				<value>classpath:mapper/adminMapper.xml</value>
-				<value>classpath:mapper/bookMapper.xml</value>
+				<value>classpath:mapper/bookListMapper.xml</value>
 				<value>classpath:mapper/userMapper.xml</value>
+				<value>classpath:mapper/reviewMapper.xml</value>
 			</list>
 		</property>
 		

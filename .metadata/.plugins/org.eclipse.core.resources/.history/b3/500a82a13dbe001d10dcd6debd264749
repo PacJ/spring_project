@@ -1,0 +1,8 @@
+package bookReview.dao;
+
+import bookReview.dto.BookReviewDTO;
+
+public interface BookReviewDAO {
+	public void save(BookReviewDTO dto);
+	
+}

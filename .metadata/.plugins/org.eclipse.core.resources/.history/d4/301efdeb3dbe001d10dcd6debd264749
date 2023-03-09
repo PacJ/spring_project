@@ -1,0 +1,25 @@
+package bookReview.dao;
+
+import bookReview.dto.BookReviewDTO;
+
+public class BookReviewDaoImp implements BookReviewDAO{
+
+	@Override
+	public void save(BookReviewDTO dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(BookReviewDTO dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

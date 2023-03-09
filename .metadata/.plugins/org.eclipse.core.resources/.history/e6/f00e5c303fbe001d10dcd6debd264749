@@ -1,0 +1,19 @@
+package bookReview.controller;
+
+import org.springframework.stereotype.Controller;
+
+import bookReview.service.BookReviewService;
+
+@Controller
+public class BookReviewController {
+
+	private BookReviewService bookReviewService;
+	
+	public BookReviewController() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void setBookReviewService(BookReviewService bookReviewService) {
+		this.bookReviewService = bookReviewService;
+	}
+}

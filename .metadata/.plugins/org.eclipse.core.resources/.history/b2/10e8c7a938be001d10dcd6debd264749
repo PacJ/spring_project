@@ -1,0 +1,14 @@
+package bookList.dto;
+
+import java.sql.Date;
+
+public class BookListDTO {
+	private int bookKeynum;
+	private String isbn;
+	private String title;
+	private String author;
+	private String publisher;
+	private String contents;
+	private Date date;
+	private String thumbnail;
+}

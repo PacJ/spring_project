@@ -1,0 +1,24 @@
+package review.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import bookReview.dto.BookReviewDTO;
+
+@Controller
+public class ReviewController {
+	
+	@RequestMapping(value = "/bookList/write.do", method = RequestMethod.GET)
+	public ModelAndView writeRev(@ModelAttribute("dto") BookReviewDTO dto, ModelAndView mav) {
+		mav.setViewName("review/write");
+		return mav;
+	};
+	
+	@RequestMapping(value = "/bookList/write.do", method = RequestMethod.POST)
+	public String writeRevExecute() {
+		return "redirect:/bookList/books.do";
+	}
+}

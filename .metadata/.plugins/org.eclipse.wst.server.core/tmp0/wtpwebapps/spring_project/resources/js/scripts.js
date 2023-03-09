@@ -34,9 +34,14 @@ $(document).ready(function () {
     }).open();
   });
 
+  // 성별
   $('.radio_btn').on('click', function () {
     $('input[name="userSex"]').val($(this).text());
     $('.radio_btn').removeClass('active');
     $(this).addClass('active');
   });
+  
+  
+  //비밀번호 재확인
+  
 });

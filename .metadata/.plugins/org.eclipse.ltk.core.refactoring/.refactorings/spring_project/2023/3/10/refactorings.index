@@ -1,3 +1,21 @@
 1678064913737	Move file
 1678160799489	Delete elements
 1678161210934	Rename resource 'css_project'
+1678331349139	Rename type 'BookReview'
+1678332629163	Delete element
+1678332727309	Rename resource 'bookMapper.xml'
+1678333528796	Encapsulate field 'userId'
+1678333643081	Encapsulate field 'userId'
+1678338356379	Rename type 'bookListService'
+1678338454581	Rename type 'bookListDTO'
+1678338561870	Encapsulate field 'isbn'
+1678338913386	Rename package 'review.controller'
+1678338923612	Rename package 'bookList'
+1678338934370	Rename type 'ReviewController'
+1678339478921	Rename type 'bookListService'
+1678339487708	Rename type 'bookListServiceImp'
+1678339937328	Rename type 'bookListDaoImp'
+1678340934008	Delete element
+1678341207840	Rename type 'bookReviewServiceImp'
+1678341214715	Rename type 'bookReviewService'
+1678349667307	Rename resource 'books.jsp'

@@ -1,0 +1,5 @@
+package bookReview.dto;
+
+public class BookReview {
+
+}
