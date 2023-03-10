@@ -1,8 +1,0 @@
-package admin.dao;
-
-import user.dto.AuthInfo;
-import user.dto.UserDTO;
-
-public interface AdminDAO {
-	public AuthInfo addUserProcess(UserDTO dto);
-}

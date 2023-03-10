@@ -14,25 +14,24 @@ import bookReview.dto.BookReviewDTO;
 
 @Controller
 public class BookListController {
-	
+
 	private BookListServiceImp bookListService;
-	
+
 	public BookListController() {
-	
+
 	}
 
-	
 	public void setBookListService(BookListServiceImp bookListService) {
 		this.bookListService = bookListService;
 	}
-	
-	@RequestMapping(value = "/bookList/book.do", method = RequestMethod.GET)
-	public ModelAndView listExec(@ModelAttribute("bk") BookListDTO bookList, ModelAndView mav) {
-		/* mav.addObject("bk", this); */
-		mav.setViewName("/bookList/book");
-		return mav;
-	}
-	
+
+	/*
+	 * @RequestMapping(value = "/bookList/book.do", method = RequestMethod.GET)
+	 * public ModelAndView listExec(@ModelAttribute("bk") BookListDTO bookList,
+	 * ModelAndView mav) { mav.addObject("bk", this);
+	 * mav.setViewName("/bookList/book"); return mav; }
+	 */
+
 	/*
 	 * @RequestMapping(value = "/bookList/writeRev.do", method = RequestMethod.GET)
 	 * public ModelAndView writeRev(@ModelAttribute("dto") BookReviewDTO dto,

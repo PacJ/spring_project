@@ -8,14 +8,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import bookList.dto.BookListDTO;
 import bookReview.dto.BookReviewDTO;
+import bookReview.dto.PageDTO;
 import bookReview.service.BookReviewService;
 
-//http://localhost:8090/myapp/bookList/books.do
+//http://localhost:8090/myapp/bookList/book.do
 
 @Controller
 public class BookReviewController {
 
 	private BookReviewService bookReviewService;
+	private PageDTO pdto;
 
 	public BookReviewController() {
 		// TODO Auto-generated constructor stub
@@ -25,13 +27,31 @@ public class BookReviewController {
 		this.bookReviewService = bookReviewService;
 	}
 
-	/*
-	 * @RequestMapping(value = "/bookList/books.do", method = RequestMethod.GET)
-	 * public ModelAndView listExec(@ModelAttribute("bk") BookListDTO bookList,
-	 * ModelAndView mav) { mav.addObject("bk", this);
-	 * mav.setViewName("/bookList/books"); return mav; }
-	 */
+	
+	 @RequestMapping(value = "/bookList/book.do", method = RequestMethod.GET)
+	 public ModelAndView bookInfo(PageDTO pv, ModelAndView mav) {
 
+		 int totalReviews = bookReviewService.countProcess(); 
+		 
+		 if(totalReviews>=1) {
+			 
+			 if(pv.getCurrentPage()==0) {
+				 pv.setCurrentPage(1); 
+			 }
+		 
+		 	this.pdto = new PageDTO(pv.getCurrentPage(), totalReviews);
+		 	mav.addObject("pv", this.pdto);
+		 }
+		 
+		 
+		 mav.addObject("revList", bookReviewService.reviewListProcess(this.pdto));
+		 
+		 
+	 mav.setViewName("/bookList/book"); 
+	 return mav; 
+	 };
+	 
+	 
 	@RequestMapping(value = "/bookList/writeRev.do", method = RequestMethod.GET)
 	public ModelAndView writeRev(@ModelAttribute("dto") BookReviewDTO dto, ModelAndView mav) {
 		mav.setViewName("bookList/writeRev");

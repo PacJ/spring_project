@@ -5,9 +5,26 @@
     
 <mapper namespace="review">
 
+	<!-- 총 후기 수 -->
+	<select id = "count" resultType= "int">
+		SELECT count(*) FROM bookReview
+	</select>
+	
+	<!-- 출력할 review select -->
+	<select id = "list" parameterType="bookReview.dto.PageDTO" resultType="bookReview.dto.BookReviewDTO">
+		<![CDATA[ 
+		SELECT y.*
+		FROM(SELECT rownum as rm, x.*
+		FROM (SELECT *
+		FROM bookReview)x)y
+		WHERE y.rm>=#{startRow} AND y.rm<=#{endRow}
+		]]>
+	</select>
+	
 	<!-- 후기 삽입 -->
 	<insert id="addReview" >
-	INSERT INTO bookReview (ReviewKeynum, userId, reviewDate)
-	VALUES (bookReview_reviewKeyNum.nextval, #{userId}, SYSDATE);
+	INSERT INTO bookReview (reviewKeynum, userId, reviewContents, reviewDate)
+	VALUES (key_num_seq.NEXTVAL, #{userId}, #{reviewContents}, SYSDATE)
 	</insert>
+	
 </mapper>

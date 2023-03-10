@@ -13,10 +13,4 @@ public class BookListDaoImp implements BookListDAO{
 		this.sqlSession = sqlSession;
 	}
 	
-	@Override
-	public int readCount(int num) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

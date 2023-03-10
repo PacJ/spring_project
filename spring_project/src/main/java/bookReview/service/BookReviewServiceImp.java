@@ -1,7 +1,10 @@
 package bookReview.service;
 
+import java.util.List;
+
 import bookReview.dao.BookReviewDAO;
 import bookReview.dto.BookReviewDTO;
+import bookReview.dto.PageDTO;
 
 public class BookReviewServiceImp implements BookReviewService{
 
@@ -31,5 +34,15 @@ public class BookReviewServiceImp implements BookReviewService{
 	public void deleteProcess(int num) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<BookReviewDTO> reviewListProcess(PageDTO pv) {
+		return bookReviewDao.reviewList(pv);
+	}
+
+	@Override
+	public int countProcess() {
+		return bookReviewDao.count();
 	}
 }

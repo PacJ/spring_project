@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>영원한 도서관</title>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.star-rating-svg.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/star-rating-svg.css">
+
 <script>
 $(document).ready(function() {
 	$('#back').click(function() {
@@ -14,11 +17,18 @@ $(document).ready(function() {
 		history.go(-1);
 	});
 	
-/*  	$('#save').click(function() {
+  	$('#save').click(function() {
 		console.log('저장');
-	 	$('#contentInput').val($('[name=reviewContents]').val()); 
+		$('[name=reviewContent]').val($('[name=reviewContent]').val().replace(/\n/gi, '<br/>'));	
 		$('#reviewForm').attr('action', 'writeRev.do').submit();
-	});  */
+	});  
+  	
+    $(".my-rating").starRating({
+        starSize: 25,
+        callback: function(currentRating, $el){
+            // make a server call here
+        }
+    });
 });
 </script>
 </head>
@@ -37,13 +47,13 @@ $(document).ready(function() {
 		
 		<tr>
 			<td>별점 남기기</td>
-			<!-- <input type="hidden" name=starNum /> -->
+			<div class="my-rating"></div>
 		</tr>
 		
 		<tr>
 			<td>내용</td>
-		<!-- 	<td><textarea rows="13" style="width:100%" name="reviewContents"></textarea></td>
-			<input type="hidden" name = "revContent" id="contentInput" /> -->
+		 	<td><textarea rows="13" style="width:100%" name="reviewContents"></textarea></td>
+		<!-- 	<input type="hidden" name = "reviewContents" id="contentInput" /> -->
 		</tr>
 		
 		<div>

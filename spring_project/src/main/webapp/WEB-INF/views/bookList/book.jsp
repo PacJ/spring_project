@@ -1,68 +1,142 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<head>
+<script src="/myapp/resources/resources/js/jquery.star-rating-svg.js"></script>
+<link rel="stylesheet" type="text/css" href="/myapp/resources/css/star-rating-svg.css">
+</head>
 <!-- /myapp 프로젝트 경로 리턴 -->
 <c:set var = "contextPath" value = "${pageContext.request.contextPath}"/> 
 
-<!-- 도서 정보 -->
+<!-- 후기 작성 -->
 	<form id = "frm" method = "get" action = "writeRev.do">
 		<input type = "submit" id = "btnWrite" value = "글쓰기"/>
 	</form>
 	
-	<table class = "table table-border mt-1">
+	<p>${contextPath }</p>
+	<!-- 후기 리스트 -->
+	<table>
 		<tr>
-			<th class = "col-md-1 text-center">번호</th>
-			<th class = "col-md-7 text-center">제목</th>
-			<th class = "col-md-2 text-center">작성자</th>
-			<th class = "col-md-2 text-center">조회수</th>
+			<th>NO.</th>
+			<th>작성자</th>
+			<th>내용</th>
 		</tr>
 		
-		<c:forEach items = "${aList}" var = "dto">
+		<c:forEach items = "${revList}" var = "dto">
 			<tr>
-				<td class = "text-center">${dto.num}</td>
-				<td class = "pl-2 text-left">
-				<c:url var = "path" value = "view.do">
+				<td>${dto.reviewKeynum}</td>
+				<c:url var = "path" value = "review.do">
 					<c:param name = "currentPage" value= "${pv.currentPage}"/>
-					<c:param name = "num" value = "${dto.num}"/>
+					<c:param name = "num" value = "${dto.reviewKeynum}"/>
 				</c:url>
-				<c:if test="${dto.re_level>0}">
-					<img src="../resources/images/level.gif" width="${20*dto.re_level}" height="15" />
-					<img src="../resources/images/re.gif">
-				</c:if>
-				<a href ="${path}"> ${dto.subject}</td>
-				<td class = "text-center">${dto.membersDTO.memberName}</td>
-				<td class = "text-center">${dto.readcount}</td>
+				<td>${dto.userId}</td>
+				<td>${dto.reviewContents}</td>
 			</tr>
 		</c:forEach>
 		
 	</table>
-		<ul class="pagination justify-content-center mt-5 mb-5">
-		
-			<!-- 이전 출력 시작 -->
-				<c:if test="${pv.startPage>1}">
-					<li class="page-item">
-						<a class="page-link" href="list.do?currentPage=${pv.startPage-pv.blockPage}">Prev</a>
-					</li>
-				</c:if>
-			<!-- 페이지 출력 시작 -->
-				<c:forEach var="i" begin="${pv.startPage}" end="${pv.endPage}">
-					<li>
+		<div class="pagination_area">
+				<ul class="pagination">
+					<!-- 처음 출력 시작 -->
+					<c:choose>
+						<c:when test="${pv.startPage >1}">
+							<li class="page-item disabled">
+								<a class="page-link" style="cursor: pointer;" href="${contextPath }/bookList/book.do?currentPage=1" >
+									<img style="opacity: .5;" src="/myapp/resources/assets/images/first.svg">
+									<span>first</span>
+								</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item disabled">
+								<a class="page-link" style="cursor: no-drop">
+									<img style="opacity: .2;" src="/myapp/resources/assets/images/first.svg">
+									<span>first</span>
+								</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+					<!-- 처음 출력 끝 -->				
+
+					<!-- 이전 출력 시작 -->
+					<c:choose>
+						<c:when test="${pv.startPage >1}">
+							<li class="page-item disabled">
+								<a class="page-link" style="cursor: pointer;" href="${contextPath }/bookList/book.do?currentPage=${pv.startPage-pv.blockPage}">
+									<img style="opacity: .5;" src="/myapp/resources/assets/images/prev.svg">
+									<span>prev</span>
+								</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item disabled">
+								<a class="page-link" style="cursor: no-drop">
+									<img style="opacity: .2;" src="/myapp/resources/assets/images/prev.svg">
+									<span>prev</span>
+								</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+					<!-- 이전 출력 끝 -->
+
+					<!-- 페이지번호 출력 시작 -->
+					<c:forEach var="i" begin="${pv.startPage}" end="${pv.endPage}">
 						<c:choose>
 							<c:when test="${i==pv.currentPage}">
-								<a class="page-link page-item active" href="list.do?currentPage=${i}">${i}</a>
+								<li class="page-item active">
+									<a class="page-link" style="cursor: pointer;" href="${contextPath }/bookList/book.do?currentPage=${i}">${i}</a>
+								</li>
 							</c:when>
 							<c:otherwise>
-								<a class="page-link" href="list.do?currentPage=${i}">${i}</a>
+								<li class="page-item">
+									<a class="page-link" style="cursor: pointer;" href="${contextPath }/bookList/book.do?currentPage=${i}">${i}</a>
+								</li>
 							</c:otherwise>
 						</c:choose>
-					</li>
-				</c:forEach>
-				
-			<c:if test="${pv.endPage<pv.totalPage}">
-				<li>
-					<a class="page-link" href="list.do?currentPage=${pv.startPage + pv.blockPage}">Next</a>
-				</li>
-			</c:if>
-			<!-- 페이지 출력 끝 -->
-		</ul>
+					</c:forEach>
+					<!-- 페이지번호 출력 끝 -->
+
+					<!-- 다음 출력 시작 -->
+					<c:choose>
+						<c:when test="${pv.endPage < pv.totalPage}">
+							<li class="page-item">
+								<a class="page-link" style="cursor: pointer;" href="${contextPath }/bookList/book.do?currentPage=${pv.startPage + pv.blockPage}">
+									<img style="opacity: .5;" src="/myapp/resources/assets/images/next.svg">
+									<span>next</span>
+								</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item">
+								<a class="page-link" style="cursor: no-drop">
+									<img style="opacity: .2;" src="/myapp/resources/assets/images/next.svg">
+									<span>next</span>
+								</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+					<!-- 다음 출력 끝 -->
+		
+					<!-- 마지막 출력 시작 -->
+					<c:choose>
+						<c:when test="${pv.endPage < pv.totalPage}">
+							<li class="page-item">
+								<a class="page-link" style="cursor: pointer;" href="${contextPath }/bookList/book.do?currentPage=${pv.totalPage}">
+								<img style="opacity: .5;" src="/myapp/resources/assets/images/last.svg">
+								<span>last</span>
+								</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item">
+								<a class="page-link" style="cursor: no-drop">
+								<img style="opacity: .2;" src="/myapp/resources/assets/images/last.svg">
+								<span>last</span>
+								</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+					<!-- 마지막 출력 끝 -->
+
+				</ul>
+			</div>

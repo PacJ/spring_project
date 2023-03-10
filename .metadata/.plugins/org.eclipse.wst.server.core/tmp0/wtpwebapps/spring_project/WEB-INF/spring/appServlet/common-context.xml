@@ -13,14 +13,21 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*/*.do"/>
-			<mvc:mapping path="/admin/*"/>
 			<mvc:exclude-mapping path="/home.do" />
 			<mvc:exclude-mapping path="/user/login.do" />
 			<mvc:exclude-mapping path="/user/signup.do" />
+			<mvc:exclude-mapping path="/bookList/book.do" />
 			<!-- <mvc:exclude-mapping path="/admin/adminSignup.do"/> -->
 			<mvc:exclude-mapping path="/bookList/books.do" />
 			<bean class="common.interceptor.AuthCheckInterceptor" />
 		</mvc:interceptor>
+		
+<!-- 		<mvc:interceptor>
+			<mvc:mapping path="/admin/*" />
+			<mvc:exclude-mapping path="/home.do" />
+			<mvc:exclude-mapping path="/bookList/book.do"/>
+			<bean class="common.interceptor.UserInterceptor" />
+		</mvc:interceptor> -->
 	</mvc:interceptors>
 	
 
