@@ -1,8 +1,0 @@
-package bookReview.controller;
-
-import org.springframework.stereotype.Controller;
-
-@Controller
-public class BookReviewController {
-
-}

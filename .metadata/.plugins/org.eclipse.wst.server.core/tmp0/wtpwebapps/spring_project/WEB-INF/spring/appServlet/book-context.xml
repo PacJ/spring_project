@@ -17,4 +17,5 @@
 <bean class="bookList.controller.BookListController" >
 	<property name="bookListService" ref="bookListService" />
 </bean>
+
 </beans>

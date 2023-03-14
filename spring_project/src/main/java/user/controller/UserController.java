@@ -75,7 +75,7 @@ public class UserController {
 			resp.setContentType("text/html;charset=UTF-8");
 			try {
 				PrintWriter out = resp.getWriter();
-				out.print("history.go(-1);</script>");
+				out.print("<script>history.go(-1);</script>");
 				out.flush();
 			} catch (Exception e2) {
 				// TODO: handle exception
@@ -102,7 +102,6 @@ public class UserController {
 	@RequestMapping(value="/user/name.do", method = RequestMethod.POST)
 	@ResponseBody
 	public UserDTO process(@RequestParam String name) {
-		System.out.println("process()");
 		UserDTO dto = userdao.selectByUserId(name);
 		
 		return dto;

@@ -88,7 +88,7 @@ $(document).ready(function(){
                             <input type="text" placeholder="아이디를 입력하세요.(영어 대/소문자, 숫자 8~15자)" name="userId" id="idCheckInput"
                             pattern="[a-zA-Z0-9]{8,15}"/>
                             <button type="button" id="idCheck">아이디 중복확인</button>
-                            <p class="" id = "usedId">※ 이미 가입된 아이디 입니다.</p>
+                            <p class="" id = "userId">※ 이미 가입된 아이디 입니다.</p>
                         </li>
                         <li>
                             <h4>비밀번호</h4>

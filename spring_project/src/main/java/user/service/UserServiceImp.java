@@ -31,6 +31,7 @@ public class UserServiceImp implements UserService{
    @Override
    public AuthInfo loginProcess(UserDTO dto) {
       UserDTO user = userDao.selectByUserId(dto.getUserId());
+      System.out.println(user);
       if(user == null) {
          System.out.println("암살시도가 있었습니다");
          throw new RuntimeException();

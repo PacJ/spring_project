@@ -26,14 +26,12 @@ public class BookReviewServiceImp implements BookReviewService{
 
 	@Override
 	public void updateProcess(BookReviewDTO dto) {
-		// TODO Auto-generated method stub
-		
+		bookReviewDao.update(dto);
 	}
 
 	@Override
 	public void deleteProcess(int num) {
-		// TODO Auto-generated method stub
-		
+		bookReviewDao.delete(num);
 	}
 
 	@Override

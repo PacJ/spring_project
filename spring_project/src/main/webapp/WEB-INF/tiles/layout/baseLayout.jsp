@@ -30,17 +30,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     
 	<title><tiles:insertAttribute name = "title"/></title>
-	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
-	<%-- <link href="<c:url value = "/resources/css/bootstrap.min.css"/> rel = "stylesheet" > --%> <!-- 다운 받아서 넣는 것을 추천! -->
 </head>
 <body>
 	<tiles:insertAttribute name = "header" />
-	<%-- <div class = "jumbotron" align = "center">
-		<div class = "container">
-			<h1 class = "display-3"><tiles:insertAttribute name = "heading"/></h1>
-			<p><tiles:insertAttribute name = "subheading"/>
-		</div>
-	</div> --%>
 	
 	<div class = "container">
 		<tiles:insertAttribute name = "content"/>

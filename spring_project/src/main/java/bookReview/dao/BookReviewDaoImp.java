@@ -40,21 +40,18 @@ public class BookReviewDaoImp implements BookReviewDAO{
 	// 후기 수정
 	@Override
 	public void update(BookReviewDTO dto) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.update("review.updateReview", dto);
 	}
 
 	// 후기 삭제
 	@Override
 	public void delete(int num) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.delete("review.deleteReview", num);
 	}
 
 	// 후기 return
 	@Override
 	public BookReviewDTO review(int num) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

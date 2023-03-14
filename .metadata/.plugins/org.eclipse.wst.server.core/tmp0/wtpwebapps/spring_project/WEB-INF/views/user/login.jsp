@@ -9,7 +9,7 @@
                 <h2>로그인</h2>
                 <p>영원한 도서관에 방문하신것을 진심으로 환영합니다.</p>
                 <form class="login_form" action="login.do" method="post">
-                    <input type="text" name="userId" placeholder="아이디를 입력하세요." />
+                    <input type="text" name="userId" id="userId" placeholder="아이디를 입력하세요." />
                     <input type="password" name="userPw" placeholder="패스워드를 입력하세요." />
                     <p class="on">※ 작성오류 문구</p>
                     <div>

@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import bookList.dto.BookListDTO;
 import bookList.service.BookListServiceImp;
 import bookReview.dto.BookReviewDTO;
+import bookReview.dto.PageDTO;
+import bookReview.service.BookReviewServiceImp;
 
 //http://localhost:8090/myapp/bookList/books.do
 
@@ -16,6 +18,8 @@ import bookReview.dto.BookReviewDTO;
 public class BookListController {
 
 	private BookListServiceImp bookListService;
+	private BookReviewServiceImp bookReviewService;
+	private PageDTO pdto;
 
 	public BookListController() {
 
@@ -25,12 +29,29 @@ public class BookListController {
 		this.bookListService = bookListService;
 	}
 
-	/*
-	 * @RequestMapping(value = "/bookList/book.do", method = RequestMethod.GET)
-	 * public ModelAndView listExec(@ModelAttribute("bk") BookListDTO bookList,
-	 * ModelAndView mav) { mav.addObject("bk", this);
-	 * mav.setViewName("/bookList/book"); return mav; }
-	 */
+	public void setBookReviewService(BookReviewServiceImp bookReviewService) {
+		this.bookReviewService = bookReviewService;
+	}
+	
+//	 @RequestMapping(value = "/bookList/book.do", method = RequestMethod.GET)
+//	 public ModelAndView bookInfo(PageDTO pv, ModelAndView mav) {
+//
+//		 int totalReviews = bookReviewService.countProcess(); 
+//		 
+//		 if(totalReviews>=1) {
+//			 if(pv.getCurrentPage()==0) {
+//				 pv.setCurrentPage(1); 
+//			 }
+//		 	this.pdto = new PageDTO(pv.getCurrentPage(), totalReviews);
+//		 	mav.addObject("pv", this.pdto);
+//		 }
+//		 
+//		 mav.addObject("revList", bookReviewService.reviewListProcess(this.pdto));
+//		 
+//	 mav.setViewName("/bookList/book"); 
+//	 return mav; 
+//	 };
+	 
 
 	/*
 	 * @RequestMapping(value = "/bookList/writeRev.do", method = RequestMethod.GET)

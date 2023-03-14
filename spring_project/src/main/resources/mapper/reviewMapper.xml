@@ -23,8 +23,20 @@
 	
 	<!-- 후기 삽입 -->
 	<insert id="addReview" >
-	INSERT INTO bookReview (reviewKeynum, userId, reviewContents, reviewDate)
-	VALUES (key_num_seq.NEXTVAL, #{userId}, #{reviewContents}, SYSDATE)
+	INSERT INTO bookReview (reviewKeynum, userId, starNum, reviewContents, reviewDate)
+	VALUES (key_num_seq.NEXTVAL, #{userId}, #{starNum}, #{reviewContents}, SYSDATE)
 	</insert>
 	
+	<!-- 후기 수정 -->
+	<update id ="updateReview" parameterType="bookReview.dto.BookReviewDTO">
+		UPDATE bookReview
+		SET reviewContents = #{reviewContents}
+		WHERE reviewKeynum = #{reviewKeynum}
+	</update>
+	
+	<!-- 후기 삭제 -->
+	<delete id = "deleteReview" parameterType="int">
+		DELETE FROM bookReview
+		WHERE reviewKeynum = #{reviewKeynum}
+	</delete>
 </mapper>

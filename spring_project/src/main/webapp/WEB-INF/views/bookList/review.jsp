@@ -12,7 +12,6 @@
 		});
 	});
 </script>
-</head>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!-- /myapp 현재프로젝트 경로 리턴 -->

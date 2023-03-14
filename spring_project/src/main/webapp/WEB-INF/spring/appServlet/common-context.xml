@@ -17,8 +17,8 @@
 			<mvc:exclude-mapping path="/user/login.do" />
 			<mvc:exclude-mapping path="/user/signup.do" />
 			<mvc:exclude-mapping path="/bookList/book.do" />
+			<mvc:exclude-mapping path="/bookList/delete.do"/>
 			<!-- <mvc:exclude-mapping path="/admin/adminSignup.do"/> -->
-			<mvc:exclude-mapping path="/bookList/books.do" />
 			<bean class="common.interceptor.AuthCheckInterceptor" />
 		</mvc:interceptor>
 		
@@ -50,8 +50,6 @@
 				<value>classpath:mapper/reviewMapper.xml</value>
 			</list>
 		</property>
-		
-		<!-- <property name="configLocation" value = "classpath:mapper/configuration.xml"></property> -->
 	</bean>
 	
 	<!-- [3] SqlSessionTemplate 빈 선언 -->
@@ -100,7 +98,7 @@
 		</property>
 	</bean>
 	
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:annotation-driven />
 	
 	<mvc:resources location="/resources" mapping="/resources/**"></mvc:resources>
 	
