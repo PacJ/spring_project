@@ -1,0 +1,386 @@
+@charset "UTF-8";
+/* books area */
+
+.books_cont .books_tab {
+  margin-bottom: 60px;
+  font-family: 'neo_eb';
+  font-size: 21px;
+  color: #999;
+  text-align: center;
+}
+
+.books_cont .books_tab > a {
+  font-family: 'neo_eb';
+  font-size: 21px;
+  color: #999;
+  text-align: center;
+}
+
+.books_cont .books_tab > a.active {
+  color: #635845;
+}
+
+.books_cont .books_tab > a.books_tab_1 {
+  margin-right: 20px;
+}
+
+.books_cont .books_tab > a.books_tab_2 {
+  margin: 0 20px;
+}
+
+.books_cont .books_tab > a.books_tab_3 {
+  margin-left: 20px;
+}
+
+.books_tab_cont_1,
+.books_tab_cont_2,
+.books_tab_cont_3 {
+  width: 100%;
+  height: auto;
+  display: none;
+}
+
+.books_tab_cont_1.active,
+.books_tab_cont_2.active,
+.books_tab_cont_3.active {
+  display: inline-block;
+}
+
+.books_tab_cont_1 > *,
+.books_tab_cont_2 > *,
+.books_tab_cont_3 > * {
+  float: left;
+}
+
+.books_tab_cont_1 .books_search_area {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 5px solid #d4cdc2;
+  border-radius: 45px;
+  overflow: hidden;
+  padding: 0 40px;
+}
+
+.books_tab_cont_1 .books_search_area form > * {
+  float: left;
+  box-sizing: border-box;
+  padding: 25px 20px 23px;
+  font-size: 18px;
+  font-family: 'neo_eb';
+  border: 0;
+  height: 80px;
+}
+
+.books_tab_cont_1 .books_search_area form > *:focus {
+  outline: none;
+}
+
+.books_tab_cont_1 .books_search_area form > select {
+  width: 200px;
+}
+
+.books_tab_cont_1 .books_search_area form > input {
+  width: 840px;
+}
+
+.books_tab_cont_1 .books_search_area form > button {
+  width: 70px;
+  padding: 15px;
+}
+
+.books_tab_cont_1 .books_search_area form > button img {
+  width: 40px;
+}
+
+.books_tab_cont_1 .bn_area {
+  text-align: center;
+  margin: 20px 0 60px 0;
+  width: 100%;
+  font-family: 'neo_eb';
+  font-size: 18px;
+  color: #bbb;
+}
+
+.books_tab_cont_1 .bn_area br {
+  display: none;
+}
+
+.books_tab_cont_1 .bn_area span {
+  margin: 0 20px;
+  font-size: 18px;
+  color: #999;
+}
+
+.books_tab_cont_1 .bn_area a {
+  font-family: 'neo_eb';
+  font-size: 18px;
+  color: #999;
+}
+
+.books_tab_cont_1 .bn_area a.active {
+  color: #635845;
+}
+
+.booklist_text {
+  font-family: 'neo_b';
+  font-size: 21px;
+  color: #aaa;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 100px;
+  margin-bottom: 120px;
+  text-align: center;
+}
+
+.booklist_text span {
+  font-family: 'neo_eb';
+  font-size: 21px;
+  color: #988e7e;
+}
+
+.booklist_text .search_text {
+  max-width: 300px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+/* list */
+
+.booklist_box {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 100px;
+}
+
+.booklist_box .list {
+  width: 100%;
+  height: auto;
+  float: left;
+  margin-bottom: 60px;
+}
+
+.booklist_box .list > * {
+  float: left;
+}
+
+.booklist_box .list > a {
+  width: 160px;
+  height: auto;
+  margin-right: 40px;
+}
+
+.booklist_box .list img {
+  width: 160px;
+}
+
+.best_tag {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  text-align: center;
+  line-height: 38px;
+  background-color: #988e7e;
+    font-size: 16px;
+}
+
+.booklist_box .list .list_text {
+  width: 600px;
+}
+
+.booklist_box .list > p {
+  width: 200px;
+  font-family: 'neo_eb';
+  font-size: 18px;
+  text-align: right;
+  color: #aaa;
+  line-height: 35px;
+}
+
+.booklist_box .list > p span {
+  font-family: 'neo_eb';
+  font-size: 18px;
+  color: #635845;
+}
+
+.booklist_box .list .list_text h4 {
+  font-family: 'neo_eb';
+  font-size: 26px;
+  color: #635845;
+  margin-bottom: 20px;
+}
+
+.booklist_box .list .list_text > p {
+  font-family: 'neo_r';
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 15px;
+  line-height: 28px;
+}
+
+.booklist_box .list .list_text > p:nth-of-type(2) {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.booklist_box .list .list_text > p span {
+  font-size: 16px;
+  color: rgb(228, 27, 27);
+}
+
+@media (max-width: 700px) {
+  .books_cont .books_tab {
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+
+  .books_cont .books_tab > a {
+    font-size: 14px;
+  }
+
+  .books_cont .books_tab > a.books_tab_1 {
+    margin-right: 10px;
+  }
+
+  .books_cont .books_tab > a.books_tab_2 {
+    margin: 0 10px;
+  }
+
+  .books_cont .books_tab > a.books_tab_3 {
+    margin-left: 10px;
+  }
+
+  .books_tab_cont_1 .books_search_area {
+    border: 3px solid #d4cdc2;
+    border-radius: 0px;
+    padding: 0;
+  }
+
+  .books_tab_cont_1 .books_search_area form > * {
+    padding: 15px 10px;
+    font-size: 14px;
+    height: 50px;
+  }
+
+  .books_tab_cont_1 .books_search_area form > select {
+    width: 90px;
+  }
+
+  .books_tab_cont_1 .books_search_area form > input {
+    width: calc(100% - 140px);
+  }
+
+  .books_tab_cont_1 .books_search_area form > button {
+    width: 50px;
+    padding: 13px;
+  }
+
+  .books_tab_cont_1 .books_search_area form > button img {
+    width: 24px;
+  }
+
+  .books_tab_cont_1 .bn_area {
+    margin: 15px 0 30px 0;
+    font-size: 14px;
+    line-height: 30px;
+  }
+
+  .books_tab_cont_1 .bn_area span:nth-of-type(6) {
+    display: none;
+  }
+
+  .books_tab_cont_1 .bn_area br {
+    display: block;
+  }
+
+  .books_tab_cont_1 .bn_area span {
+    margin: 0 10px;
+    font-size: 14px;
+    color: #999;
+  }
+
+  .books_tab_cont_1 .bn_area a {
+    font-size: 14px;
+  }
+
+  .books_tab_cont_1 .bn_area a.active {
+    color: #635845;
+  }
+
+  .booklist_text {
+    font-size: 14px;
+    padding: 0;
+    margin-bottom: 60px;
+  }
+
+  .booklist_text span {
+    font-size: 14px;
+  }
+
+  .booklist_text .search_text {
+    max-width: 80px;
+  }
+
+  /* list */
+
+  .booklist_box {
+    padding: 0;
+  }
+
+  .booklist_box .list {
+    margin-bottom: 30px;
+  }
+
+  .booklist_box .list > a {
+    width: 80px;
+    margin-right: 20px;
+  }
+
+  .booklist_box .list img {
+    width: 80px;
+  }
+
+.best_tag {
+  width: 30px;
+  height: 30px;
+  line-height: 28px;
+  font-size: 13px;
+}
+
+  .booklist_box .list .list_text {
+    width: calc(100% - 100px);
+  }
+
+  .booklist_box .list > p {
+    display: none;
+  }
+
+  .booklist_box .list .list_text h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .booklist_box .list .list_text > p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    line-height: 25px;
+  }
+
+  .booklist_box .list .list_text > p:nth-of-type(2) {
+    display: none;
+  }
+
+  .booklist_box .list .list_text > p span {
+    font-size: 14px;
+  }
+}

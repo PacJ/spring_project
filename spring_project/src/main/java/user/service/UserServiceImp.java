@@ -34,12 +34,12 @@ public class UserServiceImp implements UserService{
       System.out.println(user);
       if(user == null) {
          System.out.println("암살시도가 있었습니다");
-         throw new RuntimeException();
+         return null;
       }
       
       if(!user.matchPassword(dto.getUserPw())) {
          System.out.println("간첩신고는 111");
-         throw new RuntimeException();
+         return null;
       }
       return new AuthInfo(user.getUserId(), user.getUserPw(), user.getUserName());
    }

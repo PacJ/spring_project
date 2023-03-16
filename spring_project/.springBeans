@@ -13,7 +13,6 @@
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/user-context.xml</config>
-		<config>src/main/webapp/WEB-INF/spring/appServlet/book-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
 	</autoconfigs>
 	<configSets>

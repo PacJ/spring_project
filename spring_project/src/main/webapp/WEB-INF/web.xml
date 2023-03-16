@@ -40,7 +40,6 @@
 			/WEB-INF/spring/appServlet/user-context.xml
 			/WEB-INF/spring/appServlet/common-context.xml
 			/WEB-INF/spring/appServlet/admin-context.xml
-			/WEB-INF/spring/appServlet/book-context.xml
 			/WEB-INF/spring/appServlet/bookReview.xml
 			</param-value>
 			

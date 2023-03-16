@@ -28,18 +28,21 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script defer type="text/javascript" src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    
-	<title><tiles:insertAttribute name = "title"/></title>
 </head>
 <body>
-	<tiles:insertAttribute name = "header" />
-	
-	<div class = "container">
-		<tiles:insertAttribute name = "content"/>
-	</div>
-	
-	<div class = "footer">
-		<tiles:insertAttribute name = "footer"/>
-	</div>
-</body>
+        <!-- 공통팝업 -->
+        <section class="popup_back">
+          <article class="popup">
+            <p>팝업 내용입니다.</p>
+            <button>확인</button>
+          </article>
+        </section>
+
+        <div class="wrap">
+          <tiles:insertAttribute name="header" />
+          <tiles:insertAttribute name="content" />
+          <tiles:insertAttribute name="footer" />
+        </div>
+
+      </body>
 </html>

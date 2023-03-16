@@ -1,8 +1,0 @@
-package bookList.service;
-
-public class bookListServiceImp implements BookL{
-	
-	public bookListServiceImp() {
-		// TODO Auto-generated constructor stub
-	}
-}

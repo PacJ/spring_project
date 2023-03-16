@@ -1,9 +1,0 @@
-package bookReview.service;
-
-import bookReview.dto.BookReviewDTO;
-
-public interface bookReviewService {
-	public void saveProcess(BookReviewDTO dto);
-	public void updateProcess(BookReviewDTO dto);
-	public void deleteProcess(int num);
-}

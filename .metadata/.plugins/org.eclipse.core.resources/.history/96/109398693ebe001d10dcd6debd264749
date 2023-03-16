@@ -1,7 +1,0 @@
-package bookReview.service;
-
-import bookReview.dto.BookReviewDTO;
-
-public class bookReviewServiceImp {
-	public void saveProcess(BookReviewDTO dto);
-}

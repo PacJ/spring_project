@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+	<insert id="addUser" parameterType="user.dto.UserDTO">
+
+		{ call set_user(
+		#{user_id},
+		#{user_password},
+		#{user_name},
+		#{user_address},
+		#{user_sex},
+		#{user_age,jdbcType=VARCHAR}
+		) }
+	</insert>
+	<!-- 아이디 값으로 사용자 선택 -->
+	<select id="selectByUserId" parameterType="string"
+		resultType="user.dto.UserDTO">
+		SELECT *
+		FROM user_data
+		WHERE user_id =
+		#{user_id,jdbcType=VARCHAR} AND user_password=#{user_password ,
+		jdbcType=VARCHAR}
+	</select>
+	<select id="idcheck" parameterType="string" resultType="int">
+		SELECT
+		COUNT(user_id)
+		FROM user_data
+		WHERE user_id =
+		#{user_id,jdbcType=VARCHAR}
+	</select>
+
+
+</mapper>

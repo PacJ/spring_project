@@ -1,9 +1,0 @@
-package bookReview.dto;
-
-public class BookReviewDTO {
-	private int reviewKeynum;
-	private String ISBN;
-	private int starNum;
-	private String reviewContents;
-	private Date reviewDate;
-}

@@ -43,4 +43,5 @@ public class BookReviewServiceImp implements BookReviewService{
 	public int countProcess() {
 		return bookReviewDao.count();
 	}
+
 }

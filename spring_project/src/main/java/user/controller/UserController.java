@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,29 +61,24 @@ public class UserController {
 	@RequestMapping(value = "/user/login.do", method = RequestMethod.GET)
 	public String loginUser() {
 		return "user/login";
-	}
+	};
+	
 	
 	//로그인 처리
 	@RequestMapping(value = "/user/login.do", method = RequestMethod.POST)
-	public String loginUser(UserDTO dto, HttpSession session, HttpServletResponse resp) {
-		
-		try {
+	public String loginUser(UserDTO dto, HttpSession session, HttpServletResponse resp, Model model ) {
 			AuthInfo authInfo = userService.loginProcess(dto);
-			session.setAttribute("authInfo", authInfo);
-			System.out.println(authInfo);
-			return "redirect:/home.do";
-		} catch (Exception e) {
-			resp.setContentType("text/html;charset=UTF-8");
-			try {
-				PrintWriter out = resp.getWriter();
-				out.print("<script>history.go(-1);</script>");
-				out.flush();
-			} catch (Exception e2) {
-				// TODO: handle exception
-			}
-		}
-		return null;
-	}
+			if(authInfo == null) {
+				String popupState = "on";
+				String popupContent = "아이디 또는 비밀번호가 틀렸습니다.";
+				model.addAttribute("popupState", popupState );
+				model.addAttribute("popupContent", popupContent);
+				return "user/login";
+			} 
+				session.setAttribute("authInfo", authInfo);
+				System.out.println(authInfo);
+				return "redirect:/home.do";
+	};
 	
 	//로그아웃
 	@RequestMapping(value="/user/logout.do")

@@ -1,7 +1,0 @@
-package bookList.dto;
-
-public class BookListDTO {
-	private int bookKeynum;
-	private String isbn;
-	private 
-}

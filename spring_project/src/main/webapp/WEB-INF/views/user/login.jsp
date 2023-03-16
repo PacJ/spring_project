@@ -1,7 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<script>
+let popupState = '${popupState}';
+let popupContent = '${popupContent}';
+
+ $(document).ready(function() {
+	 if(popupState == "on") {
+		$(".popup>p").text(popupContent);
+		$(".popup_back").addClass("on");
+	 }
+	
+	$(".popup>button").click(function() {
+		console.log("closed");
+		$(".popup_back").removeClass("on");
+	});
+}); 
+</script>
 
 	<!-- login -->
         <section class="sign_area">
@@ -11,7 +26,7 @@
                 <form class="login_form" action="login.do" method="post">
                     <input type="text" name="userId" id="userId" placeholder="아이디를 입력하세요." />
                     <input type="password" name="userPw" placeholder="패스워드를 입력하세요." />
-                    <p class="on">※ 작성오류 문구</p>
+                    <p class="">※ 작성오류 문구</p>
                     <div>
                         <input type="checkbox" id="save_id" value="">
                         <label for="save_id">&nbsp;&nbsp;아이디 저장</label>

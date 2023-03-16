@@ -10,7 +10,7 @@
 		SELECT count(*) FROM bookReview
 	</select>
 	
-	<!-- 출력할 review select -->
+	<!-- 출력할 review list select -->
 	<select id = "list" parameterType="bookReview.dto.PageDTO" resultType="bookReview.dto.BookReviewDTO">
 		<![CDATA[ 
 		SELECT y.*
@@ -30,7 +30,7 @@
 	<!-- 후기 수정 -->
 	<update id ="updateReview" parameterType="bookReview.dto.BookReviewDTO">
 		UPDATE bookReview
-		SET reviewContents = #{reviewContents}
+		SET reviewContents = #{reviewContents}, starNum = #{starNum}
 		WHERE reviewKeynum = #{reviewKeynum}
 	</update>
 	
