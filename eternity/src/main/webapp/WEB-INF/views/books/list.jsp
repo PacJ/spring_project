@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!-- 통합도서조회 -->
 <section class="subpage_wrap">
@@ -61,7 +62,11 @@
 
 				<h4 class="booklist_text">
 					<!-- 총 <span>0000</span>건 -->
-					"<span class="search_text">검색어 검색어 검색어 검색어 검색어 검색어 검색어</span>"에 대한 <span>0000</span>건의 검색 결과
+					"
+					<span class="search_text">검색어 검색어 검색어 검색어 검색어 검색어 검색어</span>
+					"에 대한
+					<span>0000</span>
+					건의 검색 결과
 				</h4>
 
 				<div class="booklist_box">

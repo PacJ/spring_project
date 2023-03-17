@@ -123,6 +123,10 @@
 	    <ul>
 	        <li>
 	            <h4>리뷰 작성</h4>
+	            ${sessionScope.authInfo.user_id}
+	            ${sessionScope.authInfo.user_name}
+	            ${bldto.isbn }
+	            
 	            <input type="hidden" name="user_id" value="${sessionScope.authInfo.user_id}" />
 				<input type="hidden" name="user_name" value="${sessionScope.authInfo.user_name}" />
 				<!-- ISBN값 -->
@@ -139,7 +143,7 @@
 	        </li>
 	        <li>
 	            <!-- cols="50" rows="3" -->
-	             <textarea id = "reviewText" class="review_input" name="reviewContents" placeholder="리뷰를 작성해주세요."></textarea>
+	             <textarea id = "reviewText" class="review_input" name="review_contents" placeholder="리뷰를 작성해주세요."></textarea>
 	             <button type="submit">등록</button>
 	         </li>
 	     </ul>
@@ -172,7 +176,7 @@
 	                           </form>
 	                           </c:if>
 	                       </p>
-	                   </div>
+                		</div>
 	                   
 			<!-- 수정 -->
 			<c:if test="${sessionScope.authInfo != null && sessionScope.authInfo.userId == dto.userId }">

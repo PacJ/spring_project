@@ -12142,18 +12142,6 @@ fieldset:disabled .btn {
 
 /*# sourceMappingURL=bootstrap.css.map */
 
-@font-face {
-  font-family: 'IBM';
-  font-display: auto;
-  font-weight: 400;
-  src: url('/resources/admin/bootstrap/font/IBMPlexSansKR-Text.ttf')
-    format('TrueType');
-}
-
-* {
-  font-family: 'IBM' !important;
-}
-
 html,
 body {
   height: 100%;

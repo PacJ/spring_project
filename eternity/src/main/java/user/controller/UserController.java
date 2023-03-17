@@ -36,16 +36,16 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String main() {
-		return "home";
+		return "";
 	}
 
 	// 회원가입 폼
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String addMember(HttpSession session) {
 		if (session.getAttribute("adminauthInfo") != null) {
-			return "redirect:/home.do";
+			return "redirect:/";
 		}
 		return "signup";
 	}
@@ -64,14 +64,14 @@ public class UserController {
 		System.out.println(userDTO.getUser_sex());
 		AuthInfo authInfo = userService.addUserProcess(userDTO);
 		session.setAttribute("authInfo", authInfo);
-		return "redirect:/home.do";
+		return "redirect:/";
 	}
 
 	// 사용자 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginUser(HttpSession session) {
 		if (session.getAttribute("adminauthInfo") != null) {
-			return "redirect:/home.do";
+			return "redirect:/";
 		}
 		return "login";
 	}
@@ -85,7 +85,7 @@ public class UserController {
 		UserDTO dto = userService.loginProcess(login);
 		if (dto != null) {
 			session.setAttribute("authInfo", login);
-			return "redirect:/home";
+			return "redirect:/";
 		} else {
 			resp.setContentType("text/html;charset=UTF-8");
 			PrintWriter out;
@@ -107,7 +107,7 @@ public class UserController {
 	@RequestMapping(value = "/logout")
 	public String logoutMember(HttpSession session) {
 		session.invalidate();
-		return "redirect:/home";
+		return "redirect:/";
 	}
 
 	// 나의 도서관
@@ -149,15 +149,15 @@ public class UserController {
 		return "books/list";
 	}
 
-	@RequestMapping(value = "/books/view")
-	public String booksView() {
-		return "books/view";
-	}
+	/*
+	 * @RequestMapping(value = "/books/view") public String booksView() { return
+	 * "books/view"; }
+	 */
 
 	@RequestMapping(value = "/request")
 	public String request(HttpSession session) {
 		if (session.getAttribute("adminauthInfo") != null) {
-			return "redirect:/home.do";
+			return "redirect:/";
 		}
 		return "request";
 	}
@@ -166,7 +166,7 @@ public class UserController {
 	public String my(HttpSession session) {
 
 		if (session.getAttribute("adminauthInfo") != null) {
-			return "redirect:/home.do";
+			return "redirect:/";
 		}
 		return "my";
 	}

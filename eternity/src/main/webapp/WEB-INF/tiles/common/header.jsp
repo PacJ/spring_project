@@ -6,34 +6,21 @@
 <!-- header -->
 <section class="sign_area_pc">
 	<p>
-		<c:choose>
-			<c:when test="${sessionScope.authInfo == null && sessionScope.adminauthInfo==null}">
-
-
-				<a href="${pageContext.request.contextPath}/login">로그인</a>
-				<span>|</span>
-				<a href="${pageContext.request.contextPath}/signup">회원가입</a>
-				<!-- 김누구(abd***)님 환영합니다. <span>|</span> <a href="">로그아웃</a> -->
-
-			</c:when>
-			<c:when test="${sessionScope.adminauthInfo != null && sessionScope.authInfo==null}">
-
-				  ${sessionScope.adminauthInfo.loginId} 관리자님 환영합니다.
-                	<span>|</span>
-			
-				
-			</c:when>
-			
-
-			<c:otherwise>
-			  ${sessionScope.authInfo.user_id}님 환영합니다.
-                	<span>|</span>
-				<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
-
-			</c:otherwise>
-		</c:choose>
+    	<c:choose>
+	   		<c:when test = "${sessionScope.authInfo == null}">
+	        	<a href="${pageContext.request.contextPath}/login">로그인</a>
+	        	<span>|</span>
+	        	<a href="${pageContext.request.contextPath}/signup">회원가입</a>
+	       	</c:when>
+	        <c:otherwise>
+		        ${sessionScope.authInfo.user_id}님 환영합니다.
+	              	<span>|</span>
+	              	<a href="${pageContext.request.contextPath}/user/logout">로그아웃</a>
+	        </c:otherwise>
+        </c:choose>
 	</p>
 </section>
+
 <nav class="nav_area">
 	<article class="inner">
 		<a href="${pageContext.request.contextPath}"> <img class="logo"
@@ -45,8 +32,7 @@
 		</div>
 
 		<ul>
-			<li><a href="${pageContext.request.contextPath}/notice/notice">도서관
-					소식</a></li>
+			<li><a href="${pageContext.request.contextPath}/notice/notice">도서관 소식</a></li>
 			<li><a href="${pageContext.request.contextPath}/info">이용안내</a></li>
 			<li><a href="${pageContext.request.contextPath}/books/list">통합도서조회</a></li>
 			<li><a href="${pageContext.request.contextPath}/request">희망도서신청</a></li>

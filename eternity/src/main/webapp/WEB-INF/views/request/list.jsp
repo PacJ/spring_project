@@ -1,23 +1,63 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<!-- login -->
-<section class="sign_area">
-	<article class="inner">
-		<h2>로그인</h2>
-		<p>영원한 도서관에 방문하신것을 진심으로 환영합니다.</p>
-		<form class="login_form" action="" method="">
-			<input type="text" name="user_id" placeholder="아이디를 입력하세요." /> <input
-				type="password" name="user_pw" placeholder="패스워드를 입력하세요." />
-			<p class="on">※ 작성오류 문구</p>
-			<div>
-				<input type="checkbox" id="save_id" value=""> <label
-					for="save_id">&nbsp;&nbsp;아이디 저장</label>
-				<p>
-					아직 회원이 아니신가요?<a href="${pageContext.request.contextPath}/signup">회원가입</a>
-				</p>
-			</div>
-			<button type="submit">로그인</button>
-		</form>
-	</article>
-</section>
+<div class="request_list_area">
+
+	<dl class="request_list_title">
+		<dt>NO</dt>
+		<dt>도서명</dt>
+		<dt>저자</dt>
+		<dt>신청일</dt>
+		<dt>신청상태</dt>
+	</dl>
+	<dl class="request_list_cont">
+		<dt>01</dt>
+		<dd>여기는 도서명입니다</dd>
+		<dd>김누구</dd>
+		<dd>0000-00-00</dd>
+		<dd>처리대기</dd>
+	</dl>
+	<dl class="request_list_cont">
+		<dt>02</dt>
+		<dd>여기는 도서명입니다 여기는 도서명입니다 여기는 도서명입니다 여기는 도서명입니다 여기는 도서명입니다</dd>
+		<dd>김누구 김누구 김누구 김누구 김누구 김누구 김누구</dd>
+		<dd>0000-00-00</dd>
+		<dd>반려</dd>
+	</dl>
+</div>
+
+<div class="pagination_area">
+	<ul class="pagination">
+		<li class="page-item disabled">
+			<a class="page-link" style="cursor: no-drop">
+				<img style="opacity: .2;" src="/myapp/resources/assets/images/first.svg">
+				<span>first</span>
+			</a>
+		</li>
+		<li class="page-item disabled">
+			<a class="page-link" style="cursor: no-drop">
+				<img style="opacity: .2;" src="/myapp/resources/assets/images/prev.svg">
+				<span>prev</span>
+			</a>
+		</li>
+		<li class="page-item active">
+			<a class="page-link" style="cursor: pointer;">1</a>
+		</li>
+		<li class="page-item">
+			<a class="page-link" style="cursor: pointer;">2</a>
+		</li>
+		<li class="page-item">
+			<a class="page-link" style="cursor: pointer;">
+				<img style="opacity: .5;" src="/myapp/resources/assets/images/next.svg">
+				<span>next</span>
+			</a>
+		</li>
+		<li class="page-item">
+			<a class="page-link" style="cursor: pointer;">
+				<img style="opacity: .5;" src="/myapp/resources/assets/images/last.svg">
+				<span>last</span>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div class="request_nodata">도서신청 정보가 존재하지 않습니다.</div>

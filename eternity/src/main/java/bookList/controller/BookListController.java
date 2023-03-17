@@ -30,7 +30,7 @@ public class BookListController {
 	}
 	
 	// 후기 리스트 출력과정
-	@RequestMapping(value = "/bookList/book.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/books/view", method = RequestMethod.GET)
 	public String bookInfo(PageDTO pv, Model model) {
 		int totalReviews = bookListService.countProcess();
 		String isbn = "9791130689890";
@@ -41,6 +41,7 @@ public class BookListController {
 			}
 		}
 		
+		
 		this.bldto = bookListService.selectBookProcess(isbn);
 		this.pdto = new PageDTO(pv.getCurrentPage(), totalReviews);
 		
@@ -48,27 +49,27 @@ public class BookListController {
 		model.addAttribute("pv", this.pdto);
 		model.addAttribute("revList", bookListService.reviewListProcess(this.pdto));
 	
-		return "bookList/book";
+		return "books/view";
 	}
 	
-	@RequestMapping(value = "/bookList/writeRev", method = RequestMethod.POST)
+	@RequestMapping(value = "/books/writeRev", method = RequestMethod.POST)
 	public String writeRevExecute(@RequestParam("isbn") String isbn, bookList.dto.BookReviewDTO dto, HttpServletResponse response) {
 		dto.setIsbn(isbn);
 		bookListService.saveProcess(dto);
-		return "redirect:/bookList/book.do";
+		return "redirect:/books/view";
 	}
 	
-	@RequestMapping(value="/bookList/update", method = RequestMethod.POST)
+	@RequestMapping(value="/books/update", method = RequestMethod.POST)
 	public String updateRev(bookList.dto.BookReviewDTO dto) {
 		
 		bookListService.updateProcess(dto);
-		return "redirect:/bookList/book.do";
+		return "redirect:/books/view";
 	}
 	
-	@RequestMapping(value="/bookList/delete", method = RequestMethod.POST)
-	public String deleteRev(@RequestParam("reviewKeynum") int reviewKeynum) {
-		bookListService.deleteProcess(reviewKeynum);
-		return "redirect:/bookList/book.do";
+	@RequestMapping(value="/books/delete", method = RequestMethod.POST)
+	public String deleteRev(@RequestParam("review_keynum") int review_keynum) {
+		bookListService.deleteProcess(review_keynum);
+		return "redirect:/books/view";
 	}
 	
 	

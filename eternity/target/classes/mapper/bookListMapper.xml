@@ -22,22 +22,26 @@
 		SELECT y.*
 		FROM(SELECT rownum as rm, x.*
 		FROM (SELECT *
-		FROM BOOK_REVIEW)x)y
+		FROM BOOK_REVIEW
+		ORDER BY REVIEW_DATE DESC
+			)x
+		)y
 		WHERE y.rm>=#{startRow} AND y.rm<=#{endRow}
 		]]>
 	</select>
 	
 	<!-- 후기 삽입 -->
 	<insert id = "addReview">
-		INSERT INTO BOOK_REVIEW (REVIEW_KEYNUM, ISBN, USER_ID, STAR_NUM, REVIEW_CONTENTS, REVIEW_DATE)
-		VALUES (key_num_seq.NEXTVAL,#{isbn, jdbcType=VARCHAR}, #{user_id, jdbcType=VARCHAR}, #{star_num}, #{review_contents, jdbcType=VARCHAR}, SYSDATE)
+		INSERT INTO BOOK_REVIEW (REVIEW_KEYNUM, ISBN, USER_ID, STAR_NUM, REVIEW_CONTENTS, REVIEW_DATE, BOOK_KEYNUM)
+		VALUES (key_num_seq.NEXTVAL,#{isbn, jdbcType=VARCHAR}, #{user_id, jdbcType=VARCHAR},
+		 #{star_num}, #{review_contents, jdbcType=VARCHAR}, SYSDATE, #{book_keynum})
 	</insert>
 	
 	<!-- 후기 수정 -->
 	<update id ="updateReview" parameterType="bookList.dto.BookReviewDTO">
 		UPDATE BOOK_REVIEW
-		SET review_Contents = #{review_Contents}, star_Num = #{star_Num}
-		WHERE reviewKeynum = #{review_Keynum}
+		SET review_contents = #{review_contents}, star_num = #{star_num}
+		WHERE review_keynum = #{review_keynum}
 	</update>
 	
 	<!-- 후기 삭제 -->

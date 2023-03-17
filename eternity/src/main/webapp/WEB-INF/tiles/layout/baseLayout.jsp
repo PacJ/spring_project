@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="/myapp/resources/css/sign.css" />
         <link rel="stylesheet" href="/myapp/resources/css/notice.css" />
         <link rel="stylesheet" href="/myapp/resources/css/books.css" />
+        <link rel="stylesheet" href="/myapp/resources/css/request.css" />
 
         <!-- script -->
         <script type="text/javascript" src="/myapp/resources/js/jquery-3.6.3.js"></script>

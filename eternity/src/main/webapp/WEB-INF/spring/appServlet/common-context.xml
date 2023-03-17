@@ -24,7 +24,8 @@
 			<mvc:mapping path="/mylibrary" />
 			<mvc:mapping path="/request" />
 			<mvc:mapping path="/my/*" />
-			<mvc:exclude-mapping path="/bookList/book"/>
+			<mvc:mapping path="/books/writeRev" />
+			<mvc:mapping path="/books/update" />
 			
 
 			
@@ -32,6 +33,7 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	<mvc:annotation-driven />
+	
 	<!-- [1] DataSource 빈 선언 -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

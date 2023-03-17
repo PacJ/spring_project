@@ -1,4 +1,8 @@
 $(document).ready(function () {
+  $('.popup button').on('click', function () {
+    $('.popup_back').removeClass('on');
+  });
+
   //모바일 메뉴
   $('.menu-trigger').each(function () {
     var $this = $(this);
@@ -8,8 +12,8 @@ $(document).ready(function () {
       $(this).toggleClass('active');
     });
   });
-  
-    $(window).resize(function () {
+
+  $(window).resize(function () {
     var windowWidth = $(window).width();
 
     if (windowWidth > 700) {
@@ -51,6 +55,44 @@ $(document).ready(function () {
     $('.radio_btn').removeClass('active');
     $(this).addClass('active');
   });
-  
-  
+
+  $('.review_input').keyup(function (e) {
+    let content = $(this).val();
+
+    // 글자수 세기
+    if (content.length == 0 || content == '') {
+      $('.textCount').text('0자');
+    } else {
+      $('.textCount').text(content.length + '자');
+    }
+
+    // 글자수 제한
+    if (content.length > 200) {
+      // 200자 부터는 타이핑 되지 않도록
+      $(this).val($(this).val().substring(0, 200));
+      // 200자 넘으면 알림창 뜨도록
+      $('.popup p').html('글자수는 200자까지 입력 가능합니다.');
+      $('.popup_back').addClass('on');
+    }
+  });
+
+  $('.request_input').keyup(function (e) {
+    let content = $(this).val();
+
+    // 글자수 세기
+    if (content.length == 0 || content == '') {
+      $('.textCount').text('0자');
+    } else {
+      $('.textCount').text(content.length + '자');
+    }
+
+    // 글자수 제한
+    if (content.length > 100) {
+      // 100자 부터는 타이핑 되지 않도록
+      $(this).val($(this).val().substring(0, 100));
+      // 100자 넘으면 알림창 뜨도록
+      $('.popup p').html('글자수는 100자까지 입력 가능합니다.');
+      $('.popup_back').addClass('on');
+    }
+  });
 });

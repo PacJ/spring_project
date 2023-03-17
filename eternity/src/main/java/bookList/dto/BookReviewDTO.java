@@ -9,6 +9,7 @@ public class BookReviewDTO {
 	private int star_num;
 	private String review_contents;
 	private Date review_date;
+	private int book_keynum;
 	
 	public BookReviewDTO() {
 	}
@@ -59,6 +60,14 @@ public class BookReviewDTO {
 
 	public void setReview_date(Date review_date) {
 		this.review_date = review_date;
+	}
+
+	public int getBook_keynum() {
+		return book_keynum;
+	}
+
+	public void setBook_keynum(int book_keynum) {
+		this.book_keynum = book_keynum;
 	}
 	
 	

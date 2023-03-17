@@ -13,7 +13,7 @@
 			value="/WEB-INF/tiles/common/footer.jsp" />
 	</definition>
 
-	<definition name="home" extends="baseLayout">
+	<definition name="" extends="baseLayout">
 		<put-attribute name="title"
 			value="영원한도서관 - eternal library" />
 		<put-attribute name="content"
@@ -72,12 +72,6 @@
 		<put-attribute name="title" value="나의 도서관 - 영원한도서관" />
 		<put-attribute name="content"
 			value="/WEB-INF/views/my/user.jsp" />
-	</definition>
-	
-	<!-- 도서 정보 -->
-	<definition name = "bookList/book" extends = "baseLayout">
-		<put-attribute name="title" value="도서 정보 - 영원한 도서관"></put-attribute>
-		<put-attribute name="content" value = "/WEB-INF/views/bookList/book.jsp" />
 	</definition>
 
 
