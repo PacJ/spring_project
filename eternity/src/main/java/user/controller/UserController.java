@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -79,28 +80,20 @@ public class UserController {
 	// 로그인 처리
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginUser(@RequestParam("user_id") String user_id, @RequestParam("user_pw") String user_pw,
-			HttpSession session, HttpServletResponse resp) {
+			HttpSession session, HttpServletResponse resp, Model model) {
 		
 		AuthInfo login = new AuthInfo(user_id, user_pw);
 		UserDTO dto = userService.loginProcess(login);
-		if (dto != null) {
-			session.setAttribute("authInfo", login);
-			return "redirect:/";
-		} else {
-			resp.setContentType("text/html;charset=UTF-8");
-			PrintWriter out;
-			try {
-				out = resp.getWriter();
-				out.print("<script>alert('아이디 비밀번호 불일치'); history.go(-1);</script>");
-				out.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		if (dto == null) {
+			String popupState = "on";
+			String popupContent = "아이디 또는 비밀번호가 틀렸습니다.";
+			model.addAttribute("popupState", popupState);
+			model.addAttribute("popupContent", popupContent);
+			return "login";
+		} 
 
-		}
-
-		return null; // 로그인 후 이동할 페이지
+		session.setAttribute("authInfo", login);
+		return "redirect:/";
 	}
 
 	// 로그아웃
@@ -148,11 +141,6 @@ public class UserController {
 	public String booksList() {
 		return "books/list";
 	}
-
-	/*
-	 * @RequestMapping(value = "/books/view") public String booksView() { return
-	 * "books/view"; }
-	 */
 
 	@RequestMapping(value = "/request")
 	public String request(HttpSession session) {

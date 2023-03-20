@@ -10,7 +10,7 @@ public class UserDTO {
 
 	private String user_sex;
 	private int user_age;
-	private Date sign_Date;
+	private Date sign_date;
 
 	public UserDTO() {
 	}
@@ -63,12 +63,11 @@ public class UserDTO {
 		this.user_age = user_age;
 	}
 
-	public Date getSign_Date() {
-		return sign_Date;
+	public Date getSign_date() {
+		return sign_date;
 	}
 
-	public void setSign_Date(Date sign_Date) {
-		this.sign_Date = sign_Date;
+	public void setSign_date(Date sign_date) {
+		this.sign_date = sign_date;
 	}
-	
 }

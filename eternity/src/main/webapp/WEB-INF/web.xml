@@ -46,7 +46,7 @@
 				/WEB-INF/spring/appServlet/admin-context.xml
 				/WEB-INF/spring/appServlet/user-context.xml
 				/WEB-INF/spring/appServlet/bookList-context.xml
-
+				/WEB-INF/spring/appServlet/userBookList-context.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

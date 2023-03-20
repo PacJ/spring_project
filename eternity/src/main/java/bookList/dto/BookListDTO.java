@@ -12,7 +12,7 @@ public class BookListDTO {
 	private String contents; // 도서 소개
 	private String thumbnail; // 도서 표지 URL
 	private Date receive_date; // 입고일
-	private String category_s; // 도서 세부분류
+	private int category_s; // 도서 세부분류
 	private String book_category; // 도서 분류번호
 	private String loan_state; // 대출상태
 	private String borrow_state; // 예약상태
@@ -117,11 +117,11 @@ public class BookListDTO {
 		this.borrow_state = borrow_state;
 	}
 
-	public String getCategory_s() {
+	public int getCategory_s() {
 		return category_s;
 	}
 
-	public void setCategory_s(String category_s) {
+	public void setCategory_s(int category_s) {
 		this.category_s = category_s;
 	}
 	

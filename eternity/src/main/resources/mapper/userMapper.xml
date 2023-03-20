@@ -15,7 +15,8 @@
 		#{user_age,jdbcType=VARCHAR}
 		) }
 	</insert>
-	<!-- 아이디 값으로 사용자 선택 -->
+	
+	<!-- authInfo에 담긴 값으로 사용자 선택 -->
 	<select id="selectByUserId" parameterType="string"
 		resultType="user.dto.UserDTO">
 		SELECT *
@@ -24,6 +25,16 @@
 		#{user_id,jdbcType=VARCHAR} AND user_password=#{user_password ,
 		jdbcType=VARCHAR}
 	</select>
+	
+	<!-- 아이디(String) 값으로 사용자 선택 -->
+	<select id="selectByUserIdString" parameterType="string"
+		resultType="user.dto.UserDTO">
+		SELECT *
+		FROM user_data
+		WHERE user_id =
+		#{user_id,jdbcType=VARCHAR}
+	</select>
+	
 	<select id="idcheck" parameterType="string" resultType="int">
 		SELECT
 		COUNT(user_id)

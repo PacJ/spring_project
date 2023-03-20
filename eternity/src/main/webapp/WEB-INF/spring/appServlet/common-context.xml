@@ -54,6 +54,7 @@
 				<value>classpath:mapper/adminMapper.xml</value>
 				<value>classpath:mapper/userMapper.xml</value>
 				<value>classpath:mapper/bookListMapper.xml</value>
+				<value>classpath:mapper/userBookListMapper.xml</value>
 			</list>
 		</property>
 	</bean>

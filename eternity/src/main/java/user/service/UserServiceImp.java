@@ -35,8 +35,14 @@ public class UserServiceImp implements UserService{
       return user;
    }
 
-   // 회원가입시 유저 아이디 중복 체크
-//   public UserDTO
+	//유저 ID별로 선택
+	@Override
+	public UserDTO selectUserProcess(String user_id) {
+		return userDao.selectByUserIdString(user_id);
+	}
+	
+    // 회원가입시 유저 아이디 중복 체크
+	//public UserDTO
 	// 유저 정보 수정
 	@Override
 	public UserDTO updateUserProcess(String userId) {
@@ -45,23 +51,27 @@ public class UserServiceImp implements UserService{
 	}
 
 	// 유저 수정(유저 정보를 세션에 저장하기 위해 인증 정보 형태로 리턴)
+	// 유저 정보 수정
 	@Override
 	public AuthInfo updateUserProcess(UserDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+		userDao.updateUser(dto);
+		UserDTO user = userDao.selectByUserIdString(dto.getUser_id());
+		return new AuthInfo(user.getUser_id(), user.getUser_password(), user.getUser_name());
 	}
 
 	// 유저 삭제
 	@Override
-	public AuthInfo deleteUserProcess(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}@Override
+	public void deleteUserProcess(String userId) {
+		userDao.deleteUser(userId);
+	}
+	
+	@Override
 	public int idcheck(String userId) {
 		// TODO Auto-generated method stub
 		System.out.println("서비스 실행됨");
 		System.out.println(userId);
 		return userDao.idcheck(userId);
 	}
+
 
 }

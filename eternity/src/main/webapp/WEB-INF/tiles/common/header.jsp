@@ -15,7 +15,7 @@
 	        <c:otherwise>
 		        ${sessionScope.authInfo.user_id}님 환영합니다.
 	              	<span>|</span>
-	              	<a href="${pageContext.request.contextPath}/user/logout">로그아웃</a>
+	              	<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 	        </c:otherwise>
         </c:choose>
 	</p>
@@ -36,7 +36,7 @@
 			<li><a href="${pageContext.request.contextPath}/info">이용안내</a></li>
 			<li><a href="${pageContext.request.contextPath}/books/list">통합도서조회</a></li>
 			<li><a href="${pageContext.request.contextPath}/request">희망도서신청</a></li>
-			<li><a href="${pageContext.request.contextPath}/my">나의 도서관</a></li>
+			<li><a href="${pageContext.request.contextPath}/my/user">나의 도서관</a></li>
 
 			<li class="sign_area_mob">
 				<p>

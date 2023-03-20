@@ -31,13 +31,19 @@ public class UserDaoImp implements UserDAO{
 	}
 
 	@Override  
-	public void deleteUser(UserDTO dto) {
-		
+	public void deleteUser(String userId) {
+		sqlSession.delete("user.deleteUser", userId);
 	}
+	
 	@Override
 	public int idcheck(String adminId) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public UserDTO selectByUserIdString(String user_id) {
+		return sqlSession.selectOne("user.selectByUserIdString", user_id);
 	}
 
 }

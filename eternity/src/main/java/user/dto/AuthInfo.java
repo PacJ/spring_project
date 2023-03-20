@@ -11,9 +11,14 @@ public class AuthInfo {
 	}
 
 	public AuthInfo(String user_id, String user_password) {
-		super();
 		this.user_id = user_id;
 		this.user_password = user_password;
+	}
+	
+	public AuthInfo(String user_id, String user_password, String user_name) {
+		this.user_id = user_id;
+		this.user_password = user_password;
+		this.user_name = user_name;
 	}
 
 	public String getUser_id() {

@@ -32,22 +32,22 @@
     <fullyQualifiedTypeName name="bookReview.dto.PageDTO"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
     <fullyQualifiedTypeName name="bookReview.dto.BookReviewDTO"/>
-    <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
     <fullyQualifiedTypeName name="user.dto.UserDTO"/>
     <fullyQualifiedTypeName name="user.service.UserService"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="bookReview.dto.BookListDTO"/>
-    <fullyQualifiedTypeName name="user.dto.AuthInfo"/>
     <fullyQualifiedTypeName name="bookList.service.BookListServiceImp"/>
     <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionTemplate"/>
     <fullyQualifiedTypeName name="bookList.dao.BookListDAO"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="bookList.service.BookListService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
     <fullyQualifiedTypeName name="bookList.dto.PageDTO"/>
     <fullyQualifiedTypeName name="bookList.dto.BookReviewDTO"/>
-    <fullyQualifiedTypeName name="bookList.dto.BookListDTO"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+    <fullyQualifiedTypeName name="user.dto.AuthInfo"/>
+    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+    <fullyQualifiedTypeName name="bookList.dto.BookListDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
 </qualifiedTypeNameHistroy>

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import bookList.dto.BookListDTO;
 import bookList.dto.PageDTO;
@@ -35,12 +36,14 @@ public class BookListController {
 		int totalReviews = bookListService.countProcess();
 		String isbn = "9791130689890";
 		
+		
+		
+		 
 		if(totalReviews>=1) {
 			if(pv.getCurrentPage() == 0) {
 				pv.setCurrentPage(1);
 			}
 		}
-		
 		
 		this.bldto = bookListService.selectBookProcess(isbn);
 		this.pdto = new PageDTO(pv.getCurrentPage(), totalReviews);

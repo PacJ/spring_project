@@ -68,7 +68,7 @@
 			value="/WEB-INF/views/request/request.jsp" />
 	</definition>
 
-	<definition name="my" extends="baseLayout">
+	<definition name="my/user" extends="baseLayout">
 		<put-attribute name="title" value="나의 도서관 - 영원한도서관" />
 		<put-attribute name="content"
 			value="/WEB-INF/views/my/user.jsp" />

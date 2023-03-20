@@ -9,7 +9,29 @@
 }
 </style>
 <script>
-	$(document).ready(function() {
+<% String popupMessage = (String) session.getAttribute("popupMessage"); %>
+
+let popupShown = false;
+const popupShownKey = "popupShown";
+	  console.log("<%=popupMessage%>");
+	  $(document).on("submit", "#reserve", function() {
+		 sessionStorage.setItem(popupShownKey, "true"); 
+	  });
+	  
+	  $(document).on("submit", "#loan", function() {
+			 sessionStorage.setItem(popupShownKey, "true"); 
+		  });
+	  
+	  $(document).ready(function() {
+		console.log("로딩 완료.");
+		  const shouldShowPopup = sessionStorage.getItem(popupShownKey) === "true";
+		  if (shouldShowPopup) {
+		    $(".popup>p").text("<%=popupMessage%>");
+		    $(".popup_back").addClass("on");
+		    popupShown = true;
+		    sessionStorage.removeItem(popupShownKey);
+		  }
+		  
 		// 수정 클릭 시 수정창 나타남
 		$('[id^="editReview_"]').click(function(event) {
 		    event.preventDefault();
@@ -43,10 +65,10 @@
 	  	});
 	    
 		// 팝업창 닫기
-		$(".popup>button").click(function() {
+/* 		$(".popup>button").click(function() {
 		    console.log("closed");
 		    $(".popup_back").removeClass("on");
-		});
+		}); */
 	    
 	    // 수정 제출 시 줄바꿈 처리, 수정된 사항을 POST하고 reload
 	  	$(".updateReview").submit(function(event) {
@@ -77,7 +99,6 @@
 			$("[id^=EditDeleteFrm_" + revNum +"]").attr('action', "delete").submit();
 		});
 	  	
-	  	$('.book_state')
     });
 </script>
 <!-- 도서조회 상세보기 -->
@@ -109,7 +130,6 @@
 					등록일자 :
 					<span><fmt:formatDate value="${bldto.receive_date }" pattern="yyyy-MM-dd" /></span>
 				</p>
-				
 					<!-- 후기 평균 별점 구하기 -->
 					<c:set var="totalStars" value="0" />
 						<c:set var="numReviews" value="${fn:length(revList)}" />
@@ -121,7 +141,6 @@
 						    <c:set var="avgStars" value="${totalStars / numReviews }"></c:set>
 						    <fmt:formatNumber var="avgStarsInt" value="${avgStars}" type="number" maxFractionDigits="0" />
 						</c:if>
-						
 				<div class="book_state_area">
 					<p class="book_star star_${avgStarsInt }">
 						<span>${avgStarsInt} (${pv.totalCount })</span>
@@ -157,10 +176,22 @@
 					</p>
 					<c:choose>
 						<c:when test="${bldto.loan_state == 'Y' }">
-							<button>대출하기</button>
+						<form id="loan" name="loan" action="loan" method="post">
+							<input type="hidden" name="book_keynum" value="${bldto.book_keynum }" />
+							<input type="hidden" name="category_s" value="${bldto.category_s }" />
+							<input type="hidden" name="loan_state" value="${bldto.loan_state }" />
+							<input type="hidden" name="borrow_state" value="${bldto.borrow_state }" />
+							<button type="submit">대출하기</button>
+						</form>
 						</c:when>
 						<c:when test="${bldto.borrow_state == 'Y' }">
-							<button>예약하기</button>
+							<form id="reserve" name="reserve" action="borrow" method="post">
+								<input type="hidden" name="book_keynum" value="${bldto.book_keynum }" />
+								<input type="hidden" name="category_s" value="${bldto.category_s }" />
+								<input type="hidden" name="loan_state" value="${bldto.loan_state }" />
+								<input type="hidden" name="borrow_state" value="${bldto.borrow_state }" />
+								<button type="submit">예약하기</button>
+							</form>
 						</c:when>
 						<c:otherwise>
 							<button disabled>대출/예약 불가</button>
