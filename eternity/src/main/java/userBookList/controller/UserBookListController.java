@@ -80,6 +80,8 @@ public class UserBookListController {
 		udto.setBook_category(bdto.getCategory_s());
 		
 		boolean chk = userBookListService.BorrowProcess(udto);
+		
+		System.out.println(chk);
 		//대출 성공시 프로세스
 		if(chk == true) {	
 			String msg = "대출 성공!";
@@ -98,41 +100,6 @@ public class UserBookListController {
 		return mav;
 		
 	}
-	
-	// 대출 신청
-//		@RequestMapping(value = "books/loan", method = RequestMethod.POST)
-//		public String Borrow(HttpSession session, BookListDTO bdto, Model mod) {
-//			AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
-//			UserBookListDTO udto = new UserBookListDTO();
-//			
-//			String LL = bdto.getLoan_state();
-//			if(LL == "N") {
-//				
-//			}
-//			
-//			//대출 신청 프로세스
-//			udto.setUser_id(authInfo.getUser_id());
-//			udto.setBook_keynum(bdto.getBook_keynum());
-//			udto.setBook_category(bdto.getCategory_s());
-//			
-//			boolean chk = userBookListService.BorrowProcess(udto);
-//			//대출 성공시 프로세스
-//			if(chk == true) {	
-//				BookListDTO nbdto = userBookListService.TestProcess();
-//				mod.addAttribute("bdto", nbdto);
-//				mod.addAttribute("script", "alert('대출 성공!');");
-//			}else {
-//				//대출 실패시 프로세스
-//				BookListDTO nbdto = userBookListService.TestProcess();
-//				mod.addAttribute("bdto", nbdto);
-//				mod.addAttribute("script", "alert('대출 실패! 최대 대출 권수를 초과합니다.');");
-//			}
-//			return "books/borrowtest";
-//			
-//		}
-	
-	
-	// 
 	
 	
 	// 대출 연장
@@ -188,7 +155,8 @@ public class UserBookListController {
 		String BB = bdto.getBorrow_state();
 		if(BB.equals("N")) {
 			BookListDTO nbdto = userBookListService.TestProcess();
-			mav.addObject("bldto", nbdto); mav.addObject("script","alert('예약 실패! 예약 가능 상태가 아닙니다.');");
+			String msg = "예약 실패! 예약 가능 상태가 아닙니다.";
+			session.setAttribute("popupMessage", msg);
 			mav.setViewName("redirect:/books/view");
 			return mav;
 		}

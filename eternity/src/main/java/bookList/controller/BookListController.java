@@ -1,6 +1,7 @@
 package bookList.controller;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,8 +57,18 @@ public class BookListController {
 	}
 	
 	@RequestMapping(value = "/books/writeRev", method = RequestMethod.POST)
-	public String writeRevExecute(@RequestParam("isbn") String isbn, bookList.dto.BookReviewDTO dto, HttpServletResponse response) {
+	public String writeRevExecute(@RequestParam("isbn") String isbn, bookList.dto.BookReviewDTO dto, HttpServletResponse response, HttpSession session) {
 		dto.setIsbn(isbn);
+		int revs = bookListService.revCheckProcess(dto);
+		
+		if(revs > 0) {
+			String msg = "후기 등록 실패! 이미 해당 도서에 대한 후기를 남기셨습니다.";
+			session.setAttribute("popupMessage", msg);
+			return "redirect:/books/view";
+		}
+		
+		String msg = "후기를 등록하였습니다.";
+		session.setAttribute("popupMessage", msg);
 		bookListService.saveProcess(dto);
 		return "redirect:/books/view";
 	}

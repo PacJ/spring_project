@@ -15,6 +15,9 @@ public interface BookListDAO {
 	// 데이터(row)목록 Select, list로 받아오기
 	public List<BookReviewDTO> reviewList(PageDTO pv);
 	
+	// 해당 도서에 후기가 존재하는지 확인
+	public int revCheck(BookReviewDTO dto);
+	
 	// 후기 작성
 	public void save(BookReviewDTO dto);
 	

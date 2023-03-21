@@ -22,10 +22,14 @@ const popupShownKey = "popupShown";
 			 sessionStorage.setItem(popupShownKey, "true"); 
 		  });
 	  
+	  $(document).on("submit", "#reviewForm", function() {
+		 sessionStorage.setItem(popupShownKey, "true");
+	  });
+	  
 	  $(document).ready(function() {
 		console.log("로딩 완료.");
 		  const shouldShowPopup = sessionStorage.getItem(popupShownKey) === "true";
-		  if (shouldShowPopup) {
+		  if (shouldShowPopup && "<%=popupMessage%>" !== "null") {
 		    $(".popup>p").text("<%=popupMessage%>");
 		    $(".popup_back").addClass("on");
 		    popupShown = true;
@@ -204,8 +208,10 @@ const popupShownKey = "popupShown";
 				<p> ${bldto.contents }</p>
 			</div>
 
+<c:set var = "contextPath" value="${pageContext.request.contextPath }"/>
+
+			<!-- 후기 등록하기 -->
 			<div class="review_area">
-				<!-- 후기 등록하기 -->
 				<form name="frm" id="reviewForm" action="writeRev" method="post">
 					    <ul>
 					        <li>
@@ -305,41 +311,112 @@ const popupShownKey = "popupShown";
 			</c:forEach>
 		</div>
 		
-		<!-- 페이지 이동 -->
-			<div class="pagination_area">
-				<ul class="pagination">
-					<li class="page-item disabled">
-						<a class="page-link" style="cursor: no-drop">
-							<img style="opacity: .2;" src="/myapp/resources/assets/images/first.svg">
-							<span>first</span>
-						</a>
-					</li>
-					<li class="page-item disabled">
-						<a class="page-link" style="cursor: no-drop">
-							<img style="opacity: .2;" src="/myapp/resources/assets/images/prev.svg">
-							<span>prev</span>
-						</a>
-					</li>
-					<li class="page-item active">
-						<a class="page-link" style="cursor: pointer;">1</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" style="cursor: pointer;">2</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" style="cursor: pointer;">
-							<img style="opacity: .5;" src="/myapp/resources/assets/images/next.svg">
-							<span>next</span>
-						</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" style="cursor: pointer;">
-							<img style="opacity: .5;" src="/myapp/resources/assets/images/last.svg">
-							<span>last</span>
-						</a>
-					</li>
-				</ul>
-			</div>
+		
+<!-- 페이지 이동 -->
+<div class="pagination_area">
+            <ul class="pagination">
+                <!-- 처음 출력 시작 -->
+                <c:choose>
+                    <c:when test="${pv.startPage >1}">
+                        <li class="page-item disabled">
+                            <a class="page-link" style="cursor: pointer;" href="view?currentPage=1" >
+                                <img style="opacity: .5;" src="/myapp/resources/assets/images/first.svg">
+                                <span>first</span>
+                            </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item disabled">
+                            <a class="page-link" style="cursor: no-drop">
+                                <img style="opacity: .2;" src="/myapp/resources/assets/images/first.svg">
+                                <span>first</span>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+                <!-- 처음 출력 끝 -->				
+
+                <!-- 이전 출력 시작 -->
+                <c:choose>
+                    <c:when test="${pv.startPage >1}">
+                        <li class="page-item disabled">
+                            <a class="page-link" style="cursor: pointer;" href="view?currentPage=${pv.startPage-pv.blockPage}">
+                                <img style="opacity: .5;" src="/myapp/resources/assets/images/prev.svg">
+                                <span>prev</span>
+                            </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item disabled">
+                            <a class="page-link" style="cursor: no-drop">
+                                <img style="opacity: .2;" src="/myapp/resources/assets/images/prev.svg">
+                                <span>prev</span>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+                <!-- 이전 출력 끝 -->
+
+                <!-- 페이지번호 출력 시작 -->
+                <c:forEach var="i" begin="${pv.startPage}" end="${pv.endPage}">
+                    <c:choose>
+                        <c:when test="${i==pv.currentPage}">
+                            <li class="page-item active">
+                                <a class="page-link" style="cursor: pointer;" href="view?currentPage=${i}">${i}</a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item">
+                                <a class="page-link" style="cursor: pointer;" href="view?currentPage=${i}">${i}</a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <!-- 페이지번호 출력 끝 -->
+
+                <!-- 다음 출력 시작 -->
+                <c:choose>
+                    <c:when test="${pv.endPage < pv.totalPage}">
+                        <li class="page-item">
+                            <a class="page-link" style="cursor: pointer;" href="view?currentPage=${pv.startPage + pv.blockPage}">
+                                <img style="opacity: .5;" src="/myapp/resources/assets/images/next.svg">
+                                <span>next</span>
+                            </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                            <a class="page-link" style="cursor: no-drop">
+                                <img style="opacity: .2;" src="/myapp/resources/assets/images/next.svg">
+                                <span>next</span>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+                <!-- 다음 출력 끝 -->
+    
+                <!-- 마지막 출력 시작 -->
+                <c:choose>
+                    <c:when test="${pv.endPage < pv.totalPage}">
+                        <li class="page-item">
+                            <a class="page-link" style="cursor: pointer;" href="view?currentPage=${pv.totalPage}">
+                            <img style="opacity: .5;" src="/myapp/resources/assets/images/last.svg">
+                            <span>last</span>
+                            </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                            <a class="page-link" style="cursor: no-drop">
+                            <img style="opacity: .2;" src="/myapp/resources/assets/images/last.svg">
+                            <span>last</span>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+                <!-- 마지막 출력 끝 -->	
+            </ul>
+        </div>
 		</div>
 	</div>
 </section>

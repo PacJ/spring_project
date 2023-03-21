@@ -121,6 +121,8 @@ public class UserController {
 		return a;
 
 	}
+	
+	
 
 	@RequestMapping(value = "/notice/notice")
 	public String notice() {

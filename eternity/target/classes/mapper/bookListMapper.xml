@@ -49,4 +49,11 @@
 		DELETE FROM BOOK_REVIEW
 		WHERE review_Keynum = #{review_Keynum}
 	</delete>
+	
+	<!-- user_id와 book_keynum값으로 등록되어 있는 후기가 있는지 확인 -->
+	<select id="revCheck" parameterType="bookList.dto.BookReviewDTO" resultType="int">
+		SELECT count(*)
+		FROM BOOK_REVIEW
+		WHERE user_id = #{user_id} AND book_keynum = #{book_keynum}
+	</select>
 </mapper>

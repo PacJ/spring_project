@@ -26,6 +26,8 @@
 			<mvc:mapping path="/my/*" />
 			<mvc:mapping path="/books/writeRev" />
 			<mvc:mapping path="/books/update" />
+			<mvc:mapping path="/books/loan"/>
+			<mvc:mapping path="/books/borrow"/>
 			
 
 			

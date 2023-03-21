@@ -26,6 +26,11 @@ public class BookListDaoImp implements BookListDAO{
 		return sqlSession.selectOne("bookList.count");
 	}
 
+	@Override
+	public int revCheck(BookReviewDTO dto) {
+		return sqlSession.selectOne("bookList.revCheck", dto);
+	}
+	
 	// 후기 출력
 	@Override
 	public List<BookReviewDTO> reviewList(PageDTO pv) {

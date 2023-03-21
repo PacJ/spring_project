@@ -26,6 +26,11 @@ public class BookListServiceImp implements BookListService{
 	}
 	
 	@Override
+	public int revCheckProcess(BookReviewDTO dto) {
+		return bookListDao.revCheck(dto);
+	}
+	
+	@Override
 	public int countProcess() {
 		return bookListDao.count();
 	}
