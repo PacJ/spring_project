@@ -5,7 +5,6 @@
 
 <mapper namespace="user">
 	<insert id="addUser" parameterType="user.dto.UserDTO">
-
 		{ call set_user(
 		#{user_id},
 		#{user_password},

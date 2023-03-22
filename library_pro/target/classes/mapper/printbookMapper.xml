@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="print">
+	<select id="printbookAll" parameterType="print.dto.PageDTO"
+		resultType="admin.bookmanage.dto.BookmanageDTO">
+			<![CDATA[
+                SELECT d.*
+        FROM(SELECT rownum as rm, c.*
+            FROM(SELECT a.*, b.avg_rating ,b.countisbn
+                FROM booklist a, (SELECT isbn, AVG(star_num) AS avg_rating, count(star_num) as countisbn
+                                FROM book_review
+                                GROUP BY isbn)b
+                WHERE a.isbn = b.isbn(+))c)d
+		WHERE d.rm BETWEEN #{startRow} AND #{endRow} 
+
+		]]>
+	</select>
+	<select id="count" resultType="int">
+		SELECT count(*) FROM booklist
+	</select>
+	<select id="searchByTitle" parameterType="string"
+		resultType="admin.bookmanage.dto.BookmanageDTO">
+		SELECT * FROM booklist WHERE title LIKE '%'||#{query}||'%'
+
+	</select>
+	<select id="searchByAuthor" parameterType="string"
+		resultType="admin.bookmanage.dto.BookmanageDTO">
+		SELECT * FROM booklist WHERE author LIKE '%'||#{query}||'%'
+
+	</select>
+	<select id="searchByPub" parameterType="string"
+		resultType="admin.bookmanage.dto.BookmanageDTO">
+		SELECT * FROM booklist WHERE publisher LIKE
+		'%'||#{query}||'%'
+	</select>
+	<select id="check" parameterType="string" resultType="int">
+		select
+		count(*) from booklist where title like #{query}||'%'
+	</select>
+
+	<select id="searchByCat" parameterType="string"
+		resultType="admin.bookmanage.dto.BookmanageDTO">
+		select * from booklist where category_s like #{cate}||'%'
+
+	</select>
+
+	<select id="search" parameterType="java.util.Map"
+		resultType="admin.bookmanage.dto.BookmanageDTO">
+		SELECT y.* FROM(
+		SELECT rownum as rm, x.* FROM (
+		SELECT * FROM booklist
+		<if test="cate==null and query != null">
+			<if test="option eq 'search_title'">
+				WHERE title like '%'||#{query}||'%'
+			</if>
+			<if test="option eq 'search_author'">
+				WHERE author LIKE '%'||#{query}||'%'
+			</if>
+			<if test="option eq 'search_publisher'">
+				WHERE publisher LIKE '%'||#{query}||'%'
+			</if>
+		</if>
+		<if test="cate != null and query != null">
+			<if test="option eq 'search_title'">
+				WHERE title like '%'||#{query}||'%' AND
+				category_s LIKE
+				#{cate}||'%'
+			</if>
+			<if test="option eq 'search_author'">
+				WHERE author LIKE '%'||#{query}||'%' AND
+				category_s LIKE
+				#{cate}||'%'
+			</if>
+			<if test="option eq 'search_publisher'">
+				WHERE publisher LIKE '%'||#{query}||'%' AND
+				category_s
+				LIKE #{cate}||'%'
+			</if>
+		</if>
+		<if test="cate != null and query == null">
+			WHERE category_s LIKE #{cate}||'%'
+		</if>
+
+		ORDER BY book_keynum desc
+		) x
+		) y
+		WHERE y.rm BETWEEN #{page.startRow} AND
+		#{page.endRow}
+	</select>
+	<select id="searchcount" parameterType="java.util.Map"
+		resultType="int">
+		SELECT COUNT(*) FROM booklist
+		<if test="cate==null and query != null">
+			<if test="option eq 'search_title'">
+				WHERE title like '%'||#{query}||'%'
+			</if>
+			<if test="option eq 'search_author'">
+				WHERE author LIKE '%'||#{query}||'%'
+			</if>
+			<if test="option eq 'search_publisher'">
+				WHERE publisher LIKE '%'||#{query}||'%'
+			</if>
+		</if>
+		<if test="cate != null and query != null">
+			<if test="option eq 'search_title'">
+				WHERE title like '%'||#{query}||'%' AND
+				category_s LIKE #{cate}||'%'
+			</if>
+			<if test="option eq 'search_author'">
+				WHERE author LIKE '%'||#{query}||'%' AND
+				category_s LIKE #{cate}||'%'
+			</if>
+			<if test="option eq 'search_publisher'">
+				WHERE publisher LIKE '%'||#{query}||'%' AND
+				category_s LIKE #{cate}||'%'
+			</if>
+		</if>
+		<if test="cate != null and query == null">
+			WHERE category_s LIKE #{cate}||'%'
+		</if>
+	</select>
+
+</mapper>
