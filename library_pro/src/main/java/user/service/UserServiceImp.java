@@ -24,6 +24,7 @@ import user.dao.UserDAO;
 import user.dto.AuthInfo;
 import user.dto.UserDTO;
 import userBookList.dto.UserBookListDTO;
+import userBookList.dto.recBookDTO;
 
 // 유저 관련 서비스: 회원가입,	로그인, 정보수정, 회원탈퇴. DB에 정보를 insert, select, update, delete 한다.
 // AuthInfo: 회원의 정보값을 세션에 저장 하기 위해 사용.
@@ -124,9 +125,9 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
-	public List<String> marurecom(String paramAge, String gender) {
+	public List<recBookDTO> marurecom(String paramAge, String gender) {
 		JSONObject popularBook = null;
-		List<String> recomList = new ArrayList<String>();
+		List<recBookDTO> recomList = new ArrayList<recBookDTO>();
 		try {
 			// 검색조건 입력
 
@@ -180,8 +181,9 @@ public class UserServiceImp implements UserService {
 //					System.out.println(isbn);
 //					System.out.println(author);
 //					System.out.println(pubYear);
-					List<String> recBook = Arrays.asList(bookname, isbn, author, pubYear);
-					recomList.addAll(recBook);
+					
+					recBookDTO recBook = new recBookDTO(bookname, isbn, author, pubYear);
+					recomList.add(recBook);
 				}
 			}
 		} catch (Exception e) {

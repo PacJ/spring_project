@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import admin.dto.AdminDTO;
 import admin.dto.adminAuthInfo;
@@ -176,10 +177,6 @@ public class UserController {
 	}
 
 
-	@RequestMapping(value = "/my/recommend")
-	public String recommend() {
-		return "my/recommend";
-	}
 
 	// 주소 변경 처리
 	@RequestMapping(value = "/my/changeAdd", method = RequestMethod.POST)
@@ -231,5 +228,19 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	//추천도서별 검색버튼
+	   @RequestMapping(value = "my/searchRecommend")
+	   public String searchRecommendBook(RedirectAttributes redirectAttributes, @RequestParam("isbn") String isbn) {
+	      System.out.println(isbn);
+	      redirectAttributes.addAttribute("isbn", isbn);
+	      return "redirect:/books/search";	
+	   }
+	   
+	   //추천도서별 도서신청
+	   @RequestMapping(value = "my/requestRecommend")
+	   public String requestRecommendBook() {
+	      return "redirect:request/request";
+	   }
 
 }

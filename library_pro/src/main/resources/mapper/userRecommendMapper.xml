@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userRecommend">
+
+	<select id="userName" parameterType="String" resultType="String">
+		SELECT user_name
+		FROM user_data
+		WHERE user_keynum = #{user_keynum}
+	</select>
+
+	<select id="lastBook" parameterType="String" resultType="user.my.recommend.dto.UserRecommendDTO">
+		SELECT isbn, title
+		FROM booklist
+		WHERE book_keynum = (SELECT b.book_keynum
+		                        FROM(SELECT rownum as rm, a.*
+		                            FROM(SELECT book_keynum
+		                                FROM user_booklist
+		                                WHERE user_keynum = #{user_keynum}
+		                                ORDER BY return_date desc
+		                                )a
+		                     		)b
+		                     	WHERE b.rm =1)
+	</select>
+	
+	<select id="bookInfo" parameterType="String" resultType="user.my.recommend.dto.BookmanageDTO">
+		SELECT *
+		FROM booklist
+		WHERE isbn = #{isbn}
+	</select>
+
+</mapper>

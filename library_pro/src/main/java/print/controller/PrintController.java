@@ -57,6 +57,7 @@ public class PrintController {
 			@RequestParam("query") String query, @RequestParam("categories") String cate) {
 		//query 는 검색어, cate 는 카테고리 값  option 은 옵션값		
 		
+		
 		System.out.println("option" + option); 
 		System.out.println("query" + query);
 		System.out.println("cate" + cate);   // 리퀘스트 파람 결과값 출력

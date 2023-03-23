@@ -14,9 +14,34 @@
 
 			<!-- 맞춤도서추천 -->
 			<div class="my_tab_cont_3 active">
+			<table>
+				<tr>
+					<th>ISBN</th>
+					<th>제목</th>
+					<th>저자</th>
+					<th>출판연도</th>
+					<th></th>
+					<th></th>
+				</tr>
+				
 				<c:forEach items="${recomList }" var="recomList">
-					<p>${recomList } </p>
+							<tr>
+								<td>${recomList.isbn }</td>
+								<td>${recomList.bookname }</td>
+								<td>${recomList.author }</td>
+								<td>${recomList.pubYear }</td>
+								<td>
+									<form method="GET" action="/myapp/books/search">
+										<input type="hidden" name="search_item" value="search_title" />
+										<input type="hidden" name="categories" value="a" />
+										<input type="hidden" name="query" value="${recomList.bookname }" />
+										<button type="submit">통합 도서 조회하기</button>
+									</form>
+								</td>
+								<td><a href="${pageContext.request.contextPath}/my/">도서 신청하기</a></td>
+							</tr>
 				</c:forEach>
+			</table>
 			</div>
 
 		</div>

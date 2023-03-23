@@ -18,19 +18,23 @@
 
 		]]>
 	</select>
+	
 	<select id="count" resultType="int">
 		SELECT count(*) FROM booklist
 	</select>
+	
 	<select id="searchByTitle" parameterType="string"
 		resultType="admin.bookmanage.dto.BookmanageDTO">
 		SELECT * FROM booklist WHERE title LIKE '%'||#{query}||'%'
 
 	</select>
+	
 	<select id="searchByAuthor" parameterType="string"
 		resultType="admin.bookmanage.dto.BookmanageDTO">
 		SELECT * FROM booklist WHERE author LIKE '%'||#{query}||'%'
 
 	</select>
+	
 	<select id="searchByPub" parameterType="string"
 		resultType="admin.bookmanage.dto.BookmanageDTO">
 		SELECT * FROM booklist WHERE publisher LIKE

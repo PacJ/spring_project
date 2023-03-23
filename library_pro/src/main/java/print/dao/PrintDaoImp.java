@@ -55,6 +55,7 @@ public class PrintDaoImp implements PrintDAO {
 		
 		return sqlSession.selectList("print.search",paramMap);
 	}
+	
 	@Override
 	public int count(String query, String option, String cate) {
 		Map<String,String> paramMap = new HashMap<>();

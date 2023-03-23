@@ -25,7 +25,6 @@
     <fullyQualifiedTypeName name="bookList.dao.bookListDaoImp"/>
     <fullyQualifiedTypeName name="bookReview.service.bookReviewService"/>
     <fullyQualifiedTypeName name="bookReview.dao.BookReviewDAO"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="bookReview.service.BookReviewService"/>
     <fullyQualifiedTypeName name="bookReview.service.BookReviewServiceImp"/>
     <fullyQualifiedTypeName name="bookReview.dto.PageDTO"/>
@@ -43,11 +42,16 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
     <fullyQualifiedTypeName name="bookList.dto.PageDTO"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="user.dto.AuthInfo"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
     <fullyQualifiedTypeName name="bookList.dto.BookListDTO"/>
     <fullyQualifiedTypeName name="bookList.dto.BookReviewDTO"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
+    <fullyQualifiedTypeName name="userBookList.dto.recBookListDTO"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="userBookList.dto.recBookDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
 </qualifiedTypeNameHistroy>

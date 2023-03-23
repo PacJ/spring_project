@@ -23,6 +23,7 @@ import user.dto.UserDTO;
 import user.service.UserService;
 import userBookList.dto.MergeBookDataDTO;
 import userBookList.dto.UserBookListDTO;
+import userBookList.dto.recBookDTO;
 import userBookList.service.UserBookListService;
 
 // http://localhost:8090/myapp/my/user
@@ -360,7 +361,8 @@ public class UserBookListController {
 			gender = "1";
 		} 
 		
-		List<String> recomList = userService.marurecom(paramAge, gender);
+		List<recBookDTO> recomList = userService.marurecom(paramAge, gender);
+		
 		mav.addObject("recomList", recomList);
 		mav.setViewName("my/recommend");
 		return mav;

@@ -7,6 +7,7 @@ import org.json.simple.JSONObject;
 import bookList.dto.BookListDTO;
 import user.dto.AuthInfo;
 import user.dto.UserDTO;
+import userBookList.dto.recBookDTO;
 
 public interface UserService {
 
@@ -45,5 +46,5 @@ public interface UserService {
 	
 	//도서마루 추천 api
 	
-	public List<String> marurecom(String paramAge, String gender);
+	public List<recBookDTO> marurecom(String paramAge, String gender);
 }

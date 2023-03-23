@@ -66,6 +66,7 @@
 				<value>classpath:mapper/bookListMapper.xml</value>
 				<value>classpath:mapper/userBookListMapper.xml</value>
 				<value>classpath:mapper/userRequestMapper.xml</value>
+				<value>classpath:mapper/userRecommendMapper.xml</value>
 			</list>
 		</property>
 	</bean>
