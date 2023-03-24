@@ -193,7 +193,7 @@ const popupShownKey = "popupShown";
 					<p class="book_state">
 						대출 :
 						<c:choose>
-							<c:when test="${bldto.loan_state == 'Y' }">
+							<c:when test="${bldto.loan_state == 'Y' && bldto.borrow_state == 'N' }">
 								<span>가능</span>
 							</c:when>
 							<c:otherwise>
@@ -202,7 +202,7 @@ const popupShownKey = "popupShown";
 						</c:choose>
 						예약 :
 						<c:choose>
-							<c:when test="${bldto.borrow_state == 'Y' }">
+							<c:when test="${bldto.borrow_state == 'N' && bldto.loan_state == 'Y' }">
 								<span>가능</span>
 							</c:when>
 							<c:otherwise>
@@ -211,7 +211,7 @@ const popupShownKey = "popupShown";
 						</c:choose>
 					</p>
 					<c:choose>
-						<c:when test="${bldto.loan_state == 'Y' }">
+						<c:when test="${bldto.loan_state == 'Y' && bldto.borrow_state == 'N' }">
 							<form id="loan" name="loan" action="loan" method="post">
 								<input type="hidden" name="book_keynum"
 									value="${bldto.book_keynum }" /> <input type="hidden"
@@ -225,8 +225,8 @@ const popupShownKey = "popupShown";
 								<button type="submit">대출하기</button>
 							</form>
 						</c:when>
-						<c:when test="${bldto.borrow_state == 'Y' }">
-							<form id="reserve" name="reserve" action="borrow" method="post">
+						<c:when test="${bldto.borrow_state == 'N' && bldto.loan_state == 'Y' }">
+							<form id="reserve" name="reserve" action="borrow" method="GET">
 							<input type="hidden"
 									name="isbn" value="${bldto.isbn }" />
 								<input type="hidden" name="book_keynum"

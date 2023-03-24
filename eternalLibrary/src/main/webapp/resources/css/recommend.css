@@ -1,0 +1,166 @@
+@charset "UTF-8";
+/* recommend area */
+
+.subpage_wrap .recommend_area {
+	display: inline-block;
+}
+
+.recommend_area>*, .recommend_book_area>*, .recommend_book>* {
+	float: left;
+}
+
+.recommend_area>h4 {
+	width: 100%;
+	height: auto;
+	font-family: 'neo_b';
+	font-size: 24px;
+	color: #999;
+	margin: 40px 0 60px;
+	text-align: center;
+}
+
+.recommend_area>h4 span {
+	font-family: 'neo_eb';
+	font-size: 24px;
+	color: #635845;
+	max-width: 400px;
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+}
+
+.recommend_area>h4 br {
+	display: none;
+}
+
+.recommend_book_area {
+	width: 100%;
+	height: auto;
+	margin-bottom: 80px;
+}
+
+.recommend_book {
+	width: calc(( 100% - 160px)/5);
+	height: auto;
+	margin-right: 30px;
+}
+
+.recommend_book:nth-child(5n+0) {
+	margin-right: 0;
+}
+
+.recommend_book a {
+	width: 100%;
+}
+
+.recommend_book img {
+	box-sizing: border-box;
+	border: 10px solid #d4cdc2;
+	width: 100%;
+}
+
+.recommend_book ul {
+	width: 100%;
+	height: auto;
+}
+
+.recommend_book ul li {
+	width: 100%;
+	height: auto;
+	margin-top: 10px;
+	font-family: 'neo_r';
+	font-size: 16px;
+	color: #999;
+}
+
+.recommend_book ul li:last-of-type {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.recommend_book ul li a {
+	width: 100%;
+	display: inline-block;
+	font-family: 'neo_eb';
+	font-size: 21px;
+	color: #635845;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@media ( max-width : 700px) {
+	.recommend_area>h4 {
+		font-size: 14px;
+		margin: 0 0 20px 0;
+		line-height: 25px;
+	}
+	.recommend_area>h4 span {
+		font-family: 'neo_eb';
+		font-size: 14px;
+		color: #635845;
+		max-width: 100px;
+		display: inline-block;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		vertical-align: middle;
+	}
+	.recommend_area>h4 br {
+		display: block;
+	}
+	.recommend_book_area {
+		width: 100%;
+		height: auto;
+		margin-bottom: 40px;
+		box-sizing: border-box;
+		padding: 10px;
+		background-color: #ebe6dd;
+		border-radius: 10px;
+	}
+	.recommend_book {
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: 10px;
+		display: flex;
+		align-items: center;
+	}
+	.recommend_book:last-of-type {
+		margin-bottom: 0;
+	}
+	.recommend_book:nth-child(5n+0) {
+		margin-right: 0;
+	}
+	.recommend_book a {
+		width: auto;
+	}
+	.recommend_book img {
+		width: 60px;
+		height: auto;
+		border: 3px solid #d4cdc2;
+		margin-right: 15px;
+	}
+	.recommend_book ul {
+		width: calc(100% - 75px);
+		height: auto;
+		margin-top: 0;
+	}
+	.recommend_book ul li {
+		margin-top: 0px;
+		font-size: 14px;
+	}
+	.recommend_book ul li:last-child {
+		margin-top: 5px;
+	}
+	.recommend_book ul li:last-of-type {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.recommend_book ul li a {
+		font-size: 18px;
+	}
+}

@@ -99,7 +99,7 @@ public class UserBookListController {
 	}
 
 	// 대출 신청
-	@RequestMapping(value = "books/loan", method = RequestMethod.POST)
+	@RequestMapping(value = "books/loan", method = RequestMethod.GET)
 	public ModelAndView Borrow(HttpSession session, BookListDTO bdto, ModelAndView mav,
 			@RequestParam("isbn") String isbn) {
 		if (session.getAttribute("authInfo") == null) {
@@ -232,7 +232,7 @@ public class UserBookListController {
 
 	// 예약 신청
 	// 예약 신청
-	@RequestMapping(value = "books/borrow", method = RequestMethod.POST)
+	@RequestMapping(value = "books/borrow", method = RequestMethod.GET)
 	public ModelAndView Reserve(ModelAndView mav, HttpSession session, BookListDTO bdto,
 			@RequestParam("isbn") String isbn) {
 		if (session.getAttribute("authInfo") == null) {
